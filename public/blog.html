@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./output.css">
+  <link rel="stylesheet" href="./output.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
+<link rel="stylesheet" href="./custom.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"  rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+</head>
+
+<body class=""   >
+  <!-- Navbar -->
+  <nav class="sticky w-full bg-[#4091B2] z-[99999] top-0 left-0 transition-all duration-500 header__top" x-data="{scrollAtTop: true}">
+    <div class="bg-white py-4 ">
+      <div class="2xl:max-w-[75%] xl:max-w-[85%] lg:max-w-[95%] w-full ml-auto lg:pr-10 xl:pr-24">
+        <div>
+          <div x-data="{date: new Date}"  class="flex lg:justify-between justify-end gap-6 items-center relative z-10">
+            <p class="text-[#4091B2] font-medium">
+              <i class="fa-regular fa-clock"></i>
+              <span class="pl-1"   x-text="date.toLocaleTimeString()"></span>
+            </p>
+
+            <p x-data="myDate()" class="text-[#4091B2] font-medium hidden lg:block">
+              <i class="fa-regular fa-calendar"></i>
+              <span class="pl-1 day" x-text="week.dayName +','+ week.date +' ' + week.month() +' ' + week.year "></span>
+            </p>
+
+            <p class="text-[#4091B2] font-medium sm:block hidden">
+              <i class="fa-regular fa-clouds"></i>
+              <span class="pl-1">28°C Johar Town, Lahore</span>
+            </p>
+            <div class="justify-start items-center text-[#4091B2] font-medium hidden lg:flex">
+              <i class="fa-regular fa-globe mr-2"></i>
+              <select id="underline_select" class="block py-2.5 px-0 w-16 text-base font-medium text-[#4091B2] bg-transparent border-0 appearance-none  dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option value="English" selected ="">EN</option>
+                <option value="Čeština">Čeština</option>
+              </select>
+            </div>
+            <a href="#" class="inline-block bg-[#F9F9F9] py-1 px-3 rounded-full text-[#4091B2] font-medium">
+              Become a vendor
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div x-bind:class="{'bg-[#4091B2] shadow-lg' : !scrollAtTop}" @scroll.window="scrollAtTop = (window.pageYOffset > 50) ? false : true">
+    <div class="container xl:max-w-[90%] 2xl:max-w-[1650px]  mx-auto px-4 mt-[-65px] lg:mt-0" >
+      <div class="flex justify-between lg:justify-start flex-wrap items-center relative py-3">
+        <a href="./index.html" class="flex items-center lg:absolute lg:left-0 xl:top-[-65px]">
+          <img src="./assets/logo 2.svg" class="h-full w-full" alt="Peeksta-Logo">
+        </a>
+        <div class="flex lg:order-2 md:ml-[60px] ">
+            <div class="div  justify-between items-center space-x-5 hidden md:flex mr-6 lg:mr-0">
+                <button class="text-white text-sm font-medium">Sign in </button>
+                <button class="text-[#4091B2] text-sm font-medium bg-white px-2 py-1 rounded-full">Sign Up</button>
+            </div>
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1 md:ml-auto" id="navbar-sticky">
+          <ul class="flex flex-col p-4 mt-4 bg-white lg:bg-transparent rounded-lg border border-gray-100 lg:flex-row lg:space-x-12 lg:mt-0 lg:text-sm lg:font-medium lg:border-0 ">
+            <li>
+                <a href="./index.html" class="block relative py-2 pr-4 pl-3 font-[400] text-[#ffffff] text-[16px] bg-blue-700 rounded lg:bg-transparent lg:text-white lg:p-0 dark:text-white" aria-current="page">Home</a>
+            </li>
+            <li>
+                <a href="./result.html" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Destinations</a>
+            </li>
+            <li>
+                <a href="./blog.html" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Travel Diaries</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Videos</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+            </li>
+            <li class="md:hidden">
+              <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Login</a>
+            </li>
+            <li class="md:hidden">
+              <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Sign Up</a>
+            </li>
+            <li>
+              <div class="lg:hidden w-full mt-4 relative">
+                <div class="relative group w-full inline-block ">
+                  <div href="#" class="flex justify-between items-center py-2 pr-3 pl-3 font-[400] text-[#31406f] rounded text-base hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-[#3E47DD] lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                    <div>
+                      <i class="fa-solid fa-sliders-simple mr-2 text-[rgb(62_71_221)]"></i>Language and currency
+                    </div>
+                    <div class="flex justify-start items-center gap-3">
+                      <p>EUR</p>
+                      <span>
+                        <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-4" data-test-id="feature.locale_flag.EN"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path><path d="M3.30709 6.25897C2.05028 7.89416 1.10259 9.77885 0.550781 11.8263H8.87441L3.30709 6.25897Z" fill="#0052B4"></path><path d="M31.4485 11.8263C30.8967 9.77891 29.9489 7.89422 28.6922 6.25903L23.125 11.8263H31.4485Z" fill="#0052B4"></path><path d="M0.550781 20.1741C1.10266 22.2214 2.05034 24.1061 3.30709 25.7413L8.87422 20.1741H0.550781Z" fill="#0052B4"></path><path d="M25.7411 3.30764C24.1059 2.05083 22.2213 1.10314 20.1738 0.55127V8.87483L25.7411 3.30764Z" fill="#0052B4"></path><path d="M6.2583 28.6925C7.89349 29.9493 9.77818 30.897 11.8256 31.4489V23.1254L6.2583 28.6925Z" fill="#0052B4"></path><path d="M11.8255 0.55127C9.77811 1.10314 7.89343 2.05083 6.2583 3.30758L11.8255 8.87477V0.55127Z" fill="#0052B4"></path><path d="M20.1738 31.4489C22.2212 30.897 24.1059 29.9493 25.741 28.6926L20.1738 23.1254V31.4489Z" fill="#0052B4"></path><path d="M23.125 20.1741L28.6922 25.7413C29.9489 24.1062 30.8967 22.2214 31.4485 20.1741H23.125Z" fill="#0052B4"></path><path d="M31.8646 13.9131H18.0871H18.087V0.135438C17.4038 0.0465 16.7073 0 16 0C15.2926 0 14.5962 0.0465 13.9131 0.135438V13.9129V13.913H0.135438C0.0465 14.5962 0 15.2927 0 16C0 16.7074 0.0465 17.4038 0.135438 18.0869H13.9129H13.913V31.8646C14.5962 31.9535 15.2926 32 16 32C16.7073 32 17.4038 31.9536 18.0869 31.8646V18.0871V18.087H31.8646C31.9535 17.4038 32 16.7074 32 16C32 15.2927 31.9535 14.5962 31.8646 13.9131Z" fill="#D80027"></path><path d="M20.1738 20.174L27.3136 27.3138C27.642 26.9855 27.9552 26.6423 28.2541 26.2866L22.1415 20.174H20.1738V20.174Z" fill="#D80027"></path><path d="M11.8258 20.174H11.8257L4.68604 27.3137C5.01428 27.6421 5.35747 27.9553 5.71322 28.2542L11.8258 22.1414V20.174Z" fill="#D80027"></path><path d="M11.8263 11.8262V11.826L4.68659 4.68622C4.35822 5.01447 4.04497 5.35766 3.74609 5.71341L9.85878 11.8261H11.8263V11.8262Z" fill="#D80027"></path><path d="M20.1738 11.8262L27.3136 4.68635C26.9854 4.35797 26.6422 4.04472 26.2865 3.74591L20.1738 9.8586V11.8262Z" fill="#D80027"></path></svg>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="group-hover:block lg:absolute hidden  text-gray-700 w-full lg:w-[150px] right-0 rounded-lg z-10">
+                    <div class="bg-white px-5 py-6">
+                        <ul class="flex justify-start items-center gap-3 w-full">
+                          <li>
+                              <input type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required>
+                              <label for="hosting-small" class="inline-flex justify-start items-center gap-2 p-[4px_12px] w-full text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-[#3e47dd] peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 peer-checked:bg-[#3e47dd]">                           
+                                  <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-3.5" data-test-id="feature.locale_flag.CZ"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#F5F7FB"></path><path d="M14.608 16C14.608 16 4.69492 27.3159 4.68555 27.3137C7.58092 30.2091 11.581 32 15.9993 32C24.8358 32 31.9993 24.8365 31.9993 16H14.608Z" fill="#D80027"></path><path d="M4.68628 4.68628C-1.56209 10.9347 -1.56209 21.0653 4.68628 27.3138C7.26834 24.7317 9.75166 22.2484 16 16L4.68628 4.68628Z" fill="#0052B4"></path></svg>
+                                  <p>CZ</p>
+                              </label>
+                          </li>
+                          <li>
+                              <input checked  type="radio" id="hosting-big" name="hosting" value="hosting-big" class="hidden peer">
+                              <label for="hosting-big" class="inline-flex justify-start items-center gap-2 p-[4px_12px] w-full text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-[#3e47dd] peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 peer-checked:bg-[#3e47dd] ">
+                                  <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-3.5" data-test-id="feature.locale_flag.EN"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path><path d="M3.30709 6.25897C2.05028 7.89416 1.10259 9.77885 0.550781 11.8263H8.87441L3.30709 6.25897Z" fill="#0052B4"></path><path d="M31.4485 11.8263C30.8967 9.77891 29.9489 7.89422 28.6922 6.25903L23.125 11.8263H31.4485Z" fill="#0052B4"></path><path d="M0.550781 20.1741C1.10266 22.2214 2.05034 24.1061 3.30709 25.7413L8.87422 20.1741H0.550781Z" fill="#0052B4"></path><path d="M25.7411 3.30764C24.1059 2.05083 22.2213 1.10314 20.1738 0.55127V8.87483L25.7411 3.30764Z" fill="#0052B4"></path><path d="M6.2583 28.6925C7.89349 29.9493 9.77818 30.897 11.8256 31.4489V23.1254L6.2583 28.6925Z" fill="#0052B4"></path><path d="M11.8255 0.55127C9.77811 1.10314 7.89343 2.05083 6.2583 3.30758L11.8255 8.87477V0.55127Z" fill="#0052B4"></path><path d="M20.1738 31.4489C22.2212 30.897 24.1059 29.9493 25.741 28.6926L20.1738 23.1254V31.4489Z" fill="#0052B4"></path><path d="M23.125 20.1741L28.6922 25.7413C29.9489 24.1062 30.8967 22.2214 31.4485 20.1741H23.125Z" fill="#0052B4"></path><path d="M31.8646 13.9131H18.0871H18.087V0.135438C17.4038 0.0465 16.7073 0 16 0C15.2926 0 14.5962 0.0465 13.9131 0.135438V13.9129V13.913H0.135438C0.0465 14.5962 0 15.2927 0 16C0 16.7074 0.0465 17.4038 0.135438 18.0869H13.9129H13.913V31.8646C14.5962 31.9535 15.2926 32 16 32C16.7073 32 17.4038 31.9536 18.0869 31.8646V18.0871V18.087H31.8646C31.9535 17.4038 32 16.7074 32 16C32 15.2927 31.9535 14.5962 31.8646 13.9131Z" fill="#D80027"></path><path d="M20.1738 20.174L27.3136 27.3138C27.642 26.9855 27.9552 26.6423 28.2541 26.2866L22.1415 20.174H20.1738V20.174Z" fill="#D80027"></path><path d="M11.8258 20.174H11.8257L4.68604 27.3137C5.01428 27.6421 5.35747 27.9553 5.71322 28.2542L11.8258 22.1414V20.174Z" fill="#D80027"></path><path d="M11.8263 11.8262V11.826L4.68659 4.68622C4.35822 5.01447 4.04497 5.35766 3.74609 5.71341L9.85878 11.8261H11.8263V11.8262Z" fill="#D80027"></path><path d="M20.1738 11.8262L27.3136 4.68635C26.9854 4.35797 26.6422 4.04472 26.2865 3.74591L20.1738 9.8586V11.8262Z" fill="#D80027"></path></svg>
+                                  <p>EN</p>
+                              </label>
+                          </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </div>
+   </div>
+  </nav>
+<!-- Navbar -->
+
+  <!-- Hero Section -->
+  <section  style="background-image: url(./assets/blogs.png);font-family: 'Raleway', sans-serif;"
+    class="py-[250px] bg-center bg-no-repeat bg-cover">
+    <!-- <h1 class="text-center  mt-[-100px]">Blog</h1> -->
+    <div class="relative w-full" >
+      <h1 style="font-family:poppins;" class="text-center absolute uppercase  top-[-10px] font-semibold text-white text-5xl sm:text-[80px] left-[50%] translate-x-[-50%]  mt-[-100px]">Blogs</h1>
+      <div class="absolute z-100[] max-w-[700px] w-full mx-auto left-[50%] translate-x-[-50%] bottom-[-20px] sm:bottom-[-80px] bg-[#ffffff] rounded-full " style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+        <i class="fa-solid fa-magnifying-glass absolute left-6 top-[50%] translate-y-[-50%] text-[#4091B2]"></i>
+        <input class="block p-3 pl-12 sm:pl-16 w-full  h-[70px]  text-base  text-[#4091B2] rounded-full border-none  focus:ring-transparent focus:border-transparent dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 placeholder:text-[#4091B2] placeholder:text-sm sm:placeholder:text-base" placeholder="Search with code or locations" type="email" id="email" required="">
+        <button type="submit" class="absolute text-base top-[6px] right-[7px] sm:w-full text-center bg-[#4091B2] text-white cursor-pointer hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  text-[18px] leading-[18px] sm:max-w-[164px] h-[58px] w-[110px] px-[10px] sm:px-0 rounded-full">Search</button>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Section -->
+
+<!-- MAin content -->
+  <section class="my-14 lg:my-20" style="font-family: poppins;">
+    <div class="container   2xl:max-w-[1650px] mx-auto px-4">
+      <p class="w-full sm:w-11/12 md:w-9/12 lg:w-7/12 mx-auto text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    </div>
+  </section>
+<!-- main content -->
+
+   <!-- Related Catagories-->
+   <section class="mt-16 ">
+    <div class="container xl:max-w-screen-2xl mx-auto px-4">
+        <!-- <h1 class="text-4xl font-bold text-[#1F2B59] mb-5">Related Catagories</h1> -->
+        <div class="w-full my-10 lg:my-20 sm:grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5  gap-4 lg:gap-x-6 xl:gap-x-10">
+            <div  style=" background: rgba(247, 247, 247, 0.512);"
+                class="rounded-md mt-5 sm:mt-0  h-16 text-base flex justify-between sm:justify-around items-center ">
+                <a class="p-10 sm:p-0 rounded-[20px]" href="#">All Guides</a><i
+                    class="p-10 sm:p-0 fa-solid fa-chevron-right"></i>
+            </div>
+            <div style=" background: rgba(247, 247, 247, 0.512);"
+            class="rounded-md mt-5 sm:mt-0  h-16 text-base flex justify-between sm:justify-around items-center ">
+            <a class="p-10 sm:p-0 rounded-[20px]" href="#">Gardens</a><i
+                class="p-10 sm:p-0 fa-solid fa-chevron-right"></i>
+        </div>
+            <div style="background: rgba(247, 247, 247, 0.512);"
+                class="rounded-md  h-16 text-base flex justify-between sm:justify-around items-center">
+                <a class="p-10 sm:p-0 rounded-[20px]" href="#">Spa</a><i
+                    class=" p-10 sm:p-0 fa-solid fa-chevron-right"></i>
+            </div>
+            <div style="background: rgba(247, 247, 247, 0.512);"
+                class="rounded-md  h-16 text-base flex justify-between sm:justify-around items-center ">
+                <a class="p-10 sm:p-0 rounded-[20px]" href="#">Pool</a><i
+                    class="p-10 sm:p-0 fa-solid fa-chevron-right"></i>
+            </div>
+            <div style="background: rgba(247, 247, 247, 0.512);"
+                class="rounded-md h-16 text-base flex justify-between sm:justify-around items-center ">
+                <a class="p-10 sm:p-0" href="#">Rooms</a><i class="p-10 sm:p-0 fa-solid fa-chevron-right"></i>
+            </div>
+        </div>
+    
+    </div>
+</section>
+<!-- Related Catagories-->
+
+<!-- Featured content -->
+<section class="">
+  <div class="container mt-16  2xl:max-w-[1650px] mx-auto px-4">
+    <h1 class="text-[#4091B2] text-4xl pb-10 uppercase font-semibold">Featured</h1>
+ 
+ <div class="flex lg:flex-row flex-col">
+     <div class="w-full  static py-5 lg:w-8/12 xl:w-9/12  sm:px-7 px-3 grid sm:grid-cols-2 xl:grid-cols-3 gap-9">
+   <div>
+   <a href="./read-blogs.html"> <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-1.png" alt=""></a>
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+  <a href="./read-blogs.html">  <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-2.png" alt=""></a>
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-3.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-4.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-1.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-2.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-3.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-4.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-1.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+     </div>
+    <div  style="border-radius: 20px; box-shadow: 0px 4px 30px 0px #38476D17; " class="w-full py-4 px-8 relative flex flex-col rounded-2xl lg:w-4/12 xl:w-4/12 2xl:w-3/12">
+     <h1 style="font-family: poppins;" class="text-xl font-normal">Popular places</h1>
+     <div class="flex py-2 justify-between items-center">
+      <h1 class="text-[#00000070]">Lorem ipsum dolor sit.</h1>
+      <img src="./assets/Dropdown.png" alt="">
+     </div>
+     <div class="h-fit static lg:sticky w-full right-0 top-0 grid-cols-1 sm:grid-cols-2 gap-4 grid  lg:flex justify-around flex-col "
+    >
+     <!-- <h1 class="text-xl">Popular Cars</h1> -->
+     <div class="flex  w-full mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-1.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-2.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-3.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-4.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-2.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-3.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-4.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-1.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-2.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class=" text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-3.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-4.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+     <div class="flex mt-8 xl:mt-6">
+         <div class="flex  w-10/12 flex-row">
+             <div class="w-5/12"><img class="w-full rounded-[20px]" src="./assets/product-1.png"
+                     alt=""></div>
+             <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                 <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                 <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                 <h3 class="text-xs text-[#b0afaf]">Uploaded By <span
+                         class="text-[#4091B2] font-[500]">2Days Ago</span> </h3>
+             </div>
+         </div>
+         <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i
+                 class="fa-light fa-comments pr-1"></i>
+             <p>0</p>
+         </div>
+     </div>
+ </div> 
+  </div>
+  </div>
+</section>
+<!-- Featured content -->
+
+<!-- Trending -->
+<section class="" style="font-family: poppins;">
+  <div class="container   2xl:max-w-[1650px] mx-auto px-4">
+    <div style="box-shadow: 0px 4px 4px 0px #00000040 " class="p-[1.5rem] md:p-[2rem] lg:p-[3rem] mt-10 rounded-3xl">
+  <h1 class="text-[#4091B2] text-2xl font-semibold">Trending</h1>
+<div class="swiper mt-6 blog-mySwiper-1">
+  <div class="swiper-wrapper">
+    <div class="flex swiper-slide">
+      <div><img class="rounded-[20px] w-full h-full object-cover" src="./assets/trending-img-1.png" alt=""></div>
+      <div class="pl-4 justify-around flex flex-col">
+       <p class="text-sm sm:text-base w-10/12"> Lorem, ipsum dolor.sit amet</p>
+       <p class="text-xs text-[#020202] font-light">Lorem ipsum dolor sit amet consectetur.</p>
+   </div>
+   </div>
+   <div class="flex swiper-slide">
+       <div><img class="rounded-[20px] h-full object-cover" src="./assets/trending-img-2.png" alt=""></div>
+       <div class="pl-4 justify-around flex flex-col">
+        <p class="text-sm sm:text-base w-10/12"> Lorem, ipsum dolor.sit amet</p>
+        <p class="text-xs text-[#020202] font-light">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+    </div>
+    <div class="flex swiper-slide">
+       <div><img class="rounded-[20px] h-full object-cover" src="./assets/trending-img-3.png" alt=""></div>
+       <div class="pl-4 justify-around flex flex-col">
+        <p class="text-sm sm:text-base w-10/12"> Lorem, ipsum dolor.sit amet</p>
+        <p class="text-xs text-[#020202] font-light">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+    </div>
+    <div class="flex swiper-slide">
+       <div><img class="rounded-[20px] h-full object-cover" src="./assets/trending-img-4.png" alt=""></div>
+       <div class="pl-4 justify-around flex flex-col">
+        <p class="text-sm sm:text-base w-10/12"> Lorem, ipsum dolor.sit amet</p>
+        <p class="text-xs text-[#020202] font-light">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+    </div>
+    <div class="flex swiper-slide">
+      <div><img class="rounded-[20px] h-full object-cover" src="./assets/trending-img-1.png" alt=""></div>
+      <div class="pl-4 justify-around flex flex-col">
+       <p class="text-sm sm:text-base w-10/12"> Lorem, ipsum dolor.sit amet</p>
+       <p class="text-xs text-[#020202] font-light">Lorem ipsum dolor sit amet consectetur.</p>
+   </div>
+   </div>
+   <div class="flex swiper-slide">
+       <div><img class="rounded-[20px] h-full object-cover" src="./assets/trending-img-2.png" alt=""></div>
+       <div class="pl-4 justify-around flex flex-col">
+        <p class="text-sm sm:text-base w-10/12"> Lorem, ipsum dolor.sit amet</p>
+        <p class="text-xs text-[#020202] font-light">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+    </div>
+    <div class="flex swiper-slide">
+       <div><img class="rounded-[20px] h-full object-cover" src="./assets/trending-img-3.png" alt=""></div>
+       <div class="pl-4 justify-around flex flex-col">
+        <p class="text-sm sm:text-base w-10/12"> Lorem, ipsum dolor.sit amet</p>
+        <p class="text-xs text-[#020202] font-light">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+    </div>
+    <div class="flex swiper-slide">
+       <div><img class="rounded-[20px] h-full object-cover" src="./assets/trending-img-4.png" alt=""></div>
+       <div class="pl-4 justify-around flex flex-col">
+        <p class="text-sm sm:text-base w-10/12"> Lorem, ipsum dolor.sit amet</p>
+        <p class="text-xs text-[#020202] font-light">Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+  </div>
+  <!-- <div class="swiper-pagination"></div> -->
+</div>
+ </div>
+  </div>
+</section>
+<!-- Trending -->
+
+<!--bottom grid -->
+<section class="my-10 lg:my-20" style="font-family: poppins;">
+  <div class="container   2xl:max-w-[1650px] mx-auto px-4">
+    <h1 class="text-[#4091B2] text-4xl pb-10 uppercase font-semibold">Latest</h1>
+   <div class="w-full  static py-5 sm:px-7 px-3 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9">
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-1.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-2.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-3.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-4.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-1.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-2.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-3.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+   <div>
+    <img class="object-cover rounded-t-2xl w-full" src="./assets/featured-grid-img-4.png" alt="">
+    <div class="flex justify-between  py-4"><h6 class="text-[#FE9179] font-light text-sm" style="letter-spacing: 1px;">rooms</h6><h6 class="text-sm text-[#0000005c]">20 mins ago</h6></div>
+    <p class="font-normal">Lorem ipsum dolor sit amet.
+      Sed fugit officiis ratione.
+      </p>
+   </div>
+     </div>
+  </div>
+</section>
+<!--bottom grid -->
+
+  <!-- Footer -->
+  <div class=" pt-[60px] bg-white">
+    <div class="container xl:max-w-[1750px] mx-auto px-4">
+      <footer class=" ">
+        <div class="lg:flex  gap-6 lg:gap-20 xl:gap-48">
+          <div class="lg:flex justify-between items-start mt-[30px] lg:mt-0 w-full overflow-hidden">
+           <div class="flex lg:flex-row justify-between lg:justify-start w-full lg:w-fit">
+            <div class="flex flex-col gap-">
+              <h2 class="mb-4 text-lg font-bold  text-[#1F2B59]  dark:text-white">Services</h2>
+              <ul class="text-[#1F2B59] opacity-80 dark:text-gray-400 space-y-3">
+                  <li class="">
+                      <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Travel Guide</a>
+                  </li>
+                  <li class="">
+                    <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Salon and Spa</a>
+                  </li>
+                  <li class="">
+                    <a href="#" class="hover:underline lg:text-[14px]  opacity-90 xl:text-[16px]">Food Range</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline lg:text-[14px]  opacity-90 xl:text-[16px]">Shopping</a>
+                  </li>
+                  <li class="mt-24">
+                    <!-- <a href="#" class="hover:underline lg:text-[14px]  opacity-90 xl:text-[16px]">Terms and Conditions</a> -->
+                  </li>
+              </ul>
+              <a href="#" class="hover:underline lg:text-[14px]  opacity-40 xl:text-[16px] pt-[4rem]">Terms and Conditions</a>
+
+          </div>
+          <div>
+            <h2 class="mb-4 text-lg font-bold  text-[#1F2B59]  dark:text-white">About</h2>
+            <ul class="text-[#1F2B59] opacity-80 dark:text-gray-400 space-y-3">
+                <li class="">
+                    <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Why Choose Us</a>
+                </li>
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Who we are</a>
+                </li>
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Contact Us</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Our Blogs</a>
+                </li>
+            </ul>
+          </div>
+           </div>
+        <div class="flex-col flex">
+          <div>
+            <p class="text-[#1F2B59] opacity-80 dark:text-gray-400 inline-block">Get discounts worth up to 60% sent straight to your inbox</p>
+            <div class="relative w-full  mx-auto bg-[#ffffff] rounded-full mt-8" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+              <input class="block p-3 pl-8 w-full  h-[70px]  text-base  text-[#4091B2] rounded-full border-none  focus:ring-transparent focus:border-transparent dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 placeholder:text-[#4091B2] placeholder:text-sm sm:placeholder:text-base" placeholder="Enter your email here" type="email" id="email" required="">
+              <button type="submit" class="absolute text-base top-[6px] right-[7px] sm:w-full text-center bg-[#4091B2] text-white cursor-pointer hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  text-[18px] leading-[18px] sm:max-w-[164px] h-[58px] w-[110px] px-[10px] sm:px-0 rounded-full">Search</button>
+            </div>
+          </div>
+          <div class="flex justify-center gap-4  mt-7">
+            <a href=""><img src="./assets/logo-1.png" alt=""></a>
+            <a href=""><img src="./assets/logo-2.png" alt=""></a>
+            <a href=""><img src="./assets/logo-3.png" alt=""></a>
+            <a href=""><img src="./assets/logo-4.png" alt=""></a>
+
+          </div>
+          <div class="flex justify-end pt-[4rem] items-center gap-2">
+      <img src="./assets/icon-park-outline_handle-c.png" alt="">    <p class="opacity-40">2022 All rights reserved</p>
+          </div>
+        </div>
+            <div class="w-full lg:w-fit justify-start flex" >
+              <img class="w-ful flex justify-center l max-w-[300px] lg:max-w-full" src="./assets/footer-img.png" alt="" hey="fade-up">
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!--Footer-->
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+  <script type='text/javascript'
+  src='https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places,weather'></script>
+  <script src='myLoc.js'></script>
+  <script src="../src/js/script.js"></script>
+  <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./output.css">
+  <link rel="stylesheet" href="./custom.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+</head>
+
+<body class="" style="font-style:inter;font-family: poppins;">
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-[#4091B2] z-[99999] top-0 left-0 transition-all duration-500 header__top" x-data="{scrollAtTop: true}">
+    <div class="bg-white py-4 ">
+      <div class="2xl:max-w-[75%] xl:max-w-[85%] lg:max-w-[95%] w-full ml-auto lg:pr-10 xl:pr-24">
+        <div>
+          <div x-data="{date: new Date}"  class="flex lg:justify-between justify-end gap-6 items-center relative z-10">
+            <p class="text-[#4091B2] font-medium">
+              <i class="fa-regular fa-clock"></i>
+              <span class="pl-1"   x-text="date.toLocaleTimeString()"></span>
+            </p>
+
+            <p x-data="myDate()" class="text-[#4091B2] font-medium hidden lg:block">
+              <i class="fa-regular fa-calendar"></i>
+              <span class="pl-1 day" x-text="week.dayName +','+ week.date +' ' + week.month() +' ' + week.year "></span>
+            </p>
+
+            <p class="text-[#4091B2] font-medium sm:block hidden">
+              <i class="fa-regular fa-clouds"></i>
+              <span class="pl-1">28°C Johar Town, Lahore</span>
+            </p>
+            <div class="justify-start items-center text-[#4091B2] font-medium hidden lg:flex">
+              <i class="fa-regular fa-globe mr-2"></i>
+              <select id="underline_select" class="block py-2.5 px-0 w-16 text-base font-medium text-[#4091B2] bg-transparent border-0 appearance-none  dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option value="English" selected ="">EN</option>
+                <option value="Čeština">Čeština</option>
+              </select>
+            </div>
+            <a href="#" class="inline-block bg-[#F9F9F9] py-1 px-3 rounded-full text-[#4091B2] font-medium">
+              Become a vendor
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div x-bind:class="{'bg-[#4091B2] shadow-lg' : !scrollAtTop}" @scroll.window="scrollAtTop = (window.pageYOffset > 50) ? false : true">
+    <div class="container xl:max-w-[90%] 2xl:max-w-[1650px]  mx-auto px-4 mt-[-65px] lg:mt-0" >
+      <div class="flex justify-between lg:justify-start flex-wrap items-center relative py-3">
+        <a href="./index.html" class="flex items-center lg:absolute lg:left-0 xl:top-[-65px]">
+          <img src="./assets/logo 2.svg" class="h-full w-full" alt="Peeksta-Logo">
+        </a>
+        <div class="flex lg:order-2 md:ml-[60px] ">
+            <div class="div  justify-between items-center space-x-5 hidden md:flex mr-6 lg:mr-0">
+                <button class="text-white text-sm font-medium">Sign in </button>
+                <button class="text-[#4091B2] text-sm font-medium bg-white px-2 py-1 rounded-full">Sign Up</button>
+            </div>
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1 md:ml-auto" id="navbar-sticky">
+          <ul class="flex flex-col p-4 mt-4 bg-white lg:bg-transparent rounded-lg border border-gray-100 lg:flex-row lg:space-x-12 lg:mt-0 lg:text-sm lg:font-medium lg:border-0">
+            <li>
+                <a href="./index.html" class="block relative py-2 pr-4 pl-3 font-[400] text-[#ffffff] text-[16px] bg-blue-700 rounded lg:bg-transparent lg:text-white lg:p-0 dark:text-white" aria-current="page">Home</a>
+            </li>
+            <li>
+                <a href="./result.html" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Destinations</a>
+            </li>
+            <li>
+                <a href="./blog.html" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Travel Diaries</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Videos</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+            </li>
+            <li class="md:hidden">
+              <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Login</a>
+            </li>
+            <li class="md:hidden">
+              <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Sign Up</a>
+            </li>
+            <li>
+              <div class="lg:hidden w-full mt-4 relative">
+                <div class="relative group w-full inline-block ">
+                  <div href="#" class="flex justify-between items-center py-2 pr-3 pl-3 font-[400] text-[#31406f] rounded text-base hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-[#3E47DD] lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                    <div>
+                      <i class="fa-solid fa-sliders-simple mr-2 text-[rgb(62_71_221)]"></i>Language and currency
+                    </div>
+                    <div class="flex justify-start items-center gap-3">
+                      <p>EUR</p>
+                      <span>
+                        <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-4" data-test-id="feature.locale_flag.EN"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path><path d="M3.30709 6.25897C2.05028 7.89416 1.10259 9.77885 0.550781 11.8263H8.87441L3.30709 6.25897Z" fill="#0052B4"></path><path d="M31.4485 11.8263C30.8967 9.77891 29.9489 7.89422 28.6922 6.25903L23.125 11.8263H31.4485Z" fill="#0052B4"></path><path d="M0.550781 20.1741C1.10266 22.2214 2.05034 24.1061 3.30709 25.7413L8.87422 20.1741H0.550781Z" fill="#0052B4"></path><path d="M25.7411 3.30764C24.1059 2.05083 22.2213 1.10314 20.1738 0.55127V8.87483L25.7411 3.30764Z" fill="#0052B4"></path><path d="M6.2583 28.6925C7.89349 29.9493 9.77818 30.897 11.8256 31.4489V23.1254L6.2583 28.6925Z" fill="#0052B4"></path><path d="M11.8255 0.55127C9.77811 1.10314 7.89343 2.05083 6.2583 3.30758L11.8255 8.87477V0.55127Z" fill="#0052B4"></path><path d="M20.1738 31.4489C22.2212 30.897 24.1059 29.9493 25.741 28.6926L20.1738 23.1254V31.4489Z" fill="#0052B4"></path><path d="M23.125 20.1741L28.6922 25.7413C29.9489 24.1062 30.8967 22.2214 31.4485 20.1741H23.125Z" fill="#0052B4"></path><path d="M31.8646 13.9131H18.0871H18.087V0.135438C17.4038 0.0465 16.7073 0 16 0C15.2926 0 14.5962 0.0465 13.9131 0.135438V13.9129V13.913H0.135438C0.0465 14.5962 0 15.2927 0 16C0 16.7074 0.0465 17.4038 0.135438 18.0869H13.9129H13.913V31.8646C14.5962 31.9535 15.2926 32 16 32C16.7073 32 17.4038 31.9536 18.0869 31.8646V18.0871V18.087H31.8646C31.9535 17.4038 32 16.7074 32 16C32 15.2927 31.9535 14.5962 31.8646 13.9131Z" fill="#D80027"></path><path d="M20.1738 20.174L27.3136 27.3138C27.642 26.9855 27.9552 26.6423 28.2541 26.2866L22.1415 20.174H20.1738V20.174Z" fill="#D80027"></path><path d="M11.8258 20.174H11.8257L4.68604 27.3137C5.01428 27.6421 5.35747 27.9553 5.71322 28.2542L11.8258 22.1414V20.174Z" fill="#D80027"></path><path d="M11.8263 11.8262V11.826L4.68659 4.68622C4.35822 5.01447 4.04497 5.35766 3.74609 5.71341L9.85878 11.8261H11.8263V11.8262Z" fill="#D80027"></path><path d="M20.1738 11.8262L27.3136 4.68635C26.9854 4.35797 26.6422 4.04472 26.2865 3.74591L20.1738 9.8586V11.8262Z" fill="#D80027"></path></svg>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="group-hover:block lg:absolute hidden  text-gray-700 w-full lg:w-[150px] right-0 rounded-lg z-10">
+                    <div class="bg-white px-5 py-6">
+                        <ul class="flex justify-start items-center gap-3 w-full">
+                          <li>
+                              <input type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required>
+                              <label for="hosting-small" class="inline-flex justify-start items-center gap-2 p-[4px_12px] w-full text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-[#3e47dd] peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 peer-checked:bg-[#3e47dd]">                           
+                                  <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-3.5" data-test-id="feature.locale_flag.CZ"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#F5F7FB"></path><path d="M14.608 16C14.608 16 4.69492 27.3159 4.68555 27.3137C7.58092 30.2091 11.581 32 15.9993 32C24.8358 32 31.9993 24.8365 31.9993 16H14.608Z" fill="#D80027"></path><path d="M4.68628 4.68628C-1.56209 10.9347 -1.56209 21.0653 4.68628 27.3138C7.26834 24.7317 9.75166 22.2484 16 16L4.68628 4.68628Z" fill="#0052B4"></path></svg>
+                                  <p>CZ</p>
+                              </label>
+                          </li>
+                          <li>
+                              <input checked  type="radio" id="hosting-big" name="hosting" value="hosting-big" class="hidden peer">
+                              <label for="hosting-big" class="inline-flex justify-start items-center gap-2 p-[4px_12px] w-full text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-[#3e47dd] peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 peer-checked:bg-[#3e47dd] ">
+                                  <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-3.5" data-test-id="feature.locale_flag.EN"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path><path d="M3.30709 6.25897C2.05028 7.89416 1.10259 9.77885 0.550781 11.8263H8.87441L3.30709 6.25897Z" fill="#0052B4"></path><path d="M31.4485 11.8263C30.8967 9.77891 29.9489 7.89422 28.6922 6.25903L23.125 11.8263H31.4485Z" fill="#0052B4"></path><path d="M0.550781 20.1741C1.10266 22.2214 2.05034 24.1061 3.30709 25.7413L8.87422 20.1741H0.550781Z" fill="#0052B4"></path><path d="M25.7411 3.30764C24.1059 2.05083 22.2213 1.10314 20.1738 0.55127V8.87483L25.7411 3.30764Z" fill="#0052B4"></path><path d="M6.2583 28.6925C7.89349 29.9493 9.77818 30.897 11.8256 31.4489V23.1254L6.2583 28.6925Z" fill="#0052B4"></path><path d="M11.8255 0.55127C9.77811 1.10314 7.89343 2.05083 6.2583 3.30758L11.8255 8.87477V0.55127Z" fill="#0052B4"></path><path d="M20.1738 31.4489C22.2212 30.897 24.1059 29.9493 25.741 28.6926L20.1738 23.1254V31.4489Z" fill="#0052B4"></path><path d="M23.125 20.1741L28.6922 25.7413C29.9489 24.1062 30.8967 22.2214 31.4485 20.1741H23.125Z" fill="#0052B4"></path><path d="M31.8646 13.9131H18.0871H18.087V0.135438C17.4038 0.0465 16.7073 0 16 0C15.2926 0 14.5962 0.0465 13.9131 0.135438V13.9129V13.913H0.135438C0.0465 14.5962 0 15.2927 0 16C0 16.7074 0.0465 17.4038 0.135438 18.0869H13.9129H13.913V31.8646C14.5962 31.9535 15.2926 32 16 32C16.7073 32 17.4038 31.9536 18.0869 31.8646V18.0871V18.087H31.8646C31.9535 17.4038 32 16.7074 32 16C32 15.2927 31.9535 14.5962 31.8646 13.9131Z" fill="#D80027"></path><path d="M20.1738 20.174L27.3136 27.3138C27.642 26.9855 27.9552 26.6423 28.2541 26.2866L22.1415 20.174H20.1738V20.174Z" fill="#D80027"></path><path d="M11.8258 20.174H11.8257L4.68604 27.3137C5.01428 27.6421 5.35747 27.9553 5.71322 28.2542L11.8258 22.1414V20.174Z" fill="#D80027"></path><path d="M11.8263 11.8262V11.826L4.68659 4.68622C4.35822 5.01447 4.04497 5.35766 3.74609 5.71341L9.85878 11.8261H11.8263V11.8262Z" fill="#D80027"></path><path d="M20.1738 11.8262L27.3136 4.68635C26.9854 4.35797 26.6422 4.04472 26.2865 3.74591L20.1738 9.8586V11.8262Z" fill="#D80027"></path></svg>
+                                  <p>EN</p>
+                              </label>
+                          </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </div>
+   </div>
+  </nav>
+<!-- Navbar -->
+
+  <!-- Hero Section -->
+    <section style="background-image: url(./assets/hero-section-img.png);font-family: 'Raleway', sans-serif;"
+    class="py-[250px] pt-[400px] bg-center bg-no-repeat bg-cover">
+    <h1 class="text-5xl lg:text-7xl text-white text-center">Lorem, ipsum.</h1>
+    <h4 class="text-white text-base sm:text-xl mt-2 text-center">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit.
+      Lorem, ipsum.</h4>
+  </section>
+  <!-- Hero Section -->
+
+  <!-- Main Content -->
+  <section class="my-14 lg:my-20" style="font-family: poppins;">
+    <div class="container   2xl:max-w-[1650px] mx-auto px-4">
+      <div class="flex lg:flex-row flex-col-reverse gap-10 w-full">
+        <div class="w-full lg:w-8/12">
+          <h1 class="text-[#373737] text-4xl font-bold">Shopping</h1>
+          <p class="leading-10 l lg:leading-10  text-lg lg:text-xl mt-2">Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry.
+            Lorem Ipsum has been the industry's
+            standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p class="leading-10 l lg:leading-10  text-lg lg:text-xl mt-7">Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry.
+            Lorem Ipsum has been the industry's
+            standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+        <div class="w-full bg-white3 lg:w-4/12">
+          <div style="box-shadow: 0px 0px 20px 0px #4C577D80;"
+            class="lg:mt-[-50%] my-5 bg-white p-3  flex-col md:flex-row flex rounded-3xl lg:flex-col w-full lg:w-fit">
+            <div class="flex lg:block items-center lg:items-start">
+              <img class="rounded-3xl w-full object-cover md:max-h-full max-h-[250px] h-full"
+                src="./assets/hero-content-sidebox.png" alt="">
+            </div>
+            <div class=" lg:w-auto w-full md:w-6/12">
+              <h2 class="text-lg mt-2 lg:mt-4 font-semibold text-center">Lorem, ipsum.</h2>
+              <h2 class="text-lg font-semibold text-center">Lorem, ipsum Dolor</h2>
+              <div class="md:flex-col justify-center md:justify-start gap-3 mt-5 flex items-center">
+                <button class="bg-[#4091B2] py-2 px-2 sm:px-8 items-center gap-2 rounded-lg flex"><i
+                    class="fa-light text-white fa-heart"></i>
+                  <h3 class="text-white font-light">Add to wishlist</h3>
+                </button>
+                <button class="border border-[#4091B2] py-2 px-2 sm:px-8 items-center gap-2 rounded-lg flex">
+                  <img src="./assets/wishlist.svg" alt="">
+                  <h3 class="text-[#4091B2] font-light">Add to wishlist</h3>
+                </button>
+              </div>
+              <div class="flex md:block justify-center  gap-10">
+                <div class="flex w-full md:w-auto  mt-3 lg:pb-8 flex-col px-[40px] xl:px-[68px]">
+                  <div class="flex ] text-[#3f4254b7] gap-5 md:px-0 px-3 sm:px-10 md:gap-0 justify-between">
+                    <h5 class="font-normal">Type:</h5>
+                    <h5 class="font-normal">Lorem, ipsum.</h5>
+                  </div>
+                  <div class="flex text-[#3f4254bb] gap-5 md:px-0 px-3 sm:px-10 md:gap-0 justify-between">
+                    <h5 class="font-normal">Category:</h5>
+                    <h5 class="font-normal">Lorem, ipsum.</h5>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="leading-10 text-lg lg:text-xl lg:leading-10 mt-5">Lorem Ipsum is simply dummy text of the printing and
+          typesetting industry. Lorem Ipsum has
+          been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+          a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          when an unknown printer took a galley of type and scrambled it to make a type specimen.</p>
+        <p class="leading-10 text-lg l lg:leading-10  lg:text-xl mt-7">Lorem Ipsum is simply dummy text of the printing
+          and typesetting industry. Lorem Ipsum has
+          been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+          a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Main Content -->
+
+  <!-- Special Features -->
+  <section class="my-14 lg:my-20" style="font-family: poppins;">
+    <div class="container   2xl:max-w-[1650px] mx-auto px-4">
+      <div>
+        <hr style="transform-origin: left;" class="w-[48px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+        <h1 class="text-[#4091B2] w-full pl-5 font-semibold text-3xl lg:text-5xl">SPECIAL FEATURES</h1>
+        <p class="w-full md:w-8/12 xl:w-6/12 leading-10 mt-2 l lg:leading-10  text-lg lg:text-xl">Lorem Ipsum is simply
+          dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+      </div>
+      <div class="grid gap-[40px] gap-y-[60px] lg:gap-[40px] xl:gap-[60px] mt-[95px] sm:grid-cols-2 lg:grid-cols-3">
+        <div style="box-shadow: 0px 10px 60px 0px #262D7614;
+        " class="flex flex-col rounded-3xl px-[30px] xl:px-[56px] pb-[20px] md:pb-[36px] items-center">
+          <div class="bg-[#AF6C2C] mt-[-50px] rounded-full p-4 "><img src="./assets/special-grid-img-1.png" alt="">
+          </div>
+          <h4 class="text-3xl mt-[60px] text-[#4091B2]">Lorem, ipsum.</h4>
+          <p class="text-lg lg:text-xl l lg:leading-10  mt-10 leading-10">Lorem ipsum dolor sit amet, consect adipiscing
+            elit. Aenean commodo ligula eget dolor. Aenean massa</p>
+        </div>
+        <div style="box-shadow: 0px 10px 60px 0px #262D7614;
+        " class="flex flex-col rounded-3xl px-[30px] xl:px-[56px] pb-[20px] md:pb-[36px]  items-center">
+          <div class="bg-[#EE5060] mt-[-50px] p-4 rounded-full  "><i class="fa-light text-[60px] fa-hotel"></i></div>
+          <h4 class="text-3xl mt-[60px] text-[#4091B2]">Lorem, ipsum.</h4>
+          <p class="text-lg lg:text-xl l lg:leading-10  mt-10 leading-10">Lorem ipsum dolor sit amet, consect adipiscing
+            elit. Aenean commodo ligula eget dolor. Aenean massa</p>
+        </div>
+        <div id="grid-3" style="box-shadow: 0px 10px 60px 0px #262D7614;
+        " class="flex flex-col rounded-3xl px-[30px] xl:px-[56px] pb-[20px] md:pb-[36px]  items-center">
+          <div class="bg-[#AF6C2C] mt-[-50px] rounded-full p-4 "><img class="w-[60px]"
+              src="./assets/special-grid-img-3.png" alt=""></div>
+          <h4 class="text-3xl mt-[60px] text-[#4091B2]">Lorem, ipsum.</h4>
+          <p class="text-lg lg:text-xl l lg:leading-10  mt-10 leading-10">Lorem ipsum dolor sit amet, consect adipiscing
+            elit. Aenean commodo ligula eget dolor. Aenean massa</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Special Features -->
+
+  <!-- Facilities -->
+  <section class="my-14 lg:my-20" style="font-family: poppins;">
+    <div class="container   2xl:max-w-[1650px] mx-auto px-4">
+      <div>
+        <hr style="transform-origin: left;" class="w-[48px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+        <h1 class="text-[#4091B2] w-full pl-5 font-semibold text-3xl lg:text-5xl">FACILITES</h1>
+      </div>
+      <div class="flex mt-10 flex-col-reverse lg:flex-row">
+        <div class="w-full lg:w-6/12">
+          <div class="grid gap-y-9 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2">
+            <div style="box-shadow: 0px 10px 50px 0px #262D7614;"
+              class="flex w-full sm:w-fit gap-4 items-center py-2 px-4 rounded-2xl">
+              <img src="./assets/video-ion.png" alt="">
+              <h4>Lorem, ipsum.</h4>
+            </div>
+            <div style="box-shadow: 0px 10px 50px 0px #262D7614;"
+              class="flex w-full sm:w-fit gap-4 items-center py-2 px-4 rounded-2xl">
+              <img src="./assets/video-ion.png" alt="">
+              <h4>Lorem, ipsum.</h4>
+            </div>
+            <div style="box-shadow: 0px 10px 50px 0px #262D7614;"
+              class="flex w-full sm:w-fit gap-4 items-center py-2 px-4 rounded-2xl">
+              <img src="./assets/video-ion.png" alt="">
+              <h4>Lorem, ipsum.</h4>
+            </div>
+            <div style="box-shadow: 0px 10px 50px 0px #262D7614;"
+              class="flex w-full sm:w-fit gap-4 items-center py-2 px-4 rounded-2xl">
+              <img src="./assets/video-ion.png" alt="">
+              <h4>Lorem, ipsum.</h4>
+            </div>
+            <div style="box-shadow: 0px 10px 50px 0px #262D7614;"
+              class="flex w-full sm:w-fit gap-4 items-center py-2 px-4 rounded-2xl">
+              <img src="./assets/video-ion.png" alt="">
+              <h4>Lorem, ipsum.</h4>
+            </div>
+            <div style="box-shadow: 0px 10px 50px 0px #262D7614;"
+              class="flex w-full sm:w-fit gap-4 items-center py-2 px-4 rounded-2xl">
+              <img src="./assets/video-ion.png" alt="">
+              <h4>Lorem, ipsum.</h4>
+            </div>
+            <div style="box-shadow: 0px 10px 50px 0px #262D7614;"
+              class="flex w-full sm:w-fit gap-4 items-center py-2 px-4 rounded-2xl">
+              <img src="./assets/video-ion.png" alt="">
+              <h4>Lorem, ipsum.</h4>
+            </div>
+            <div style="box-shadow: 0px 10px 50px 0px #262D7614;"
+              class="flex w-full sm:w-fit gap-4 items-center py-2 px-4 rounded-2xl">
+              <img src="./assets/video-ion.png" alt="">
+              <h4>Lorem, ipsum.</h4>
+            </div>
+
+          </div>
+        </div>
+        <div
+          class="w-full h-[0999999px] lg:h-auto max-h-[350px] lg:max-h-[100%] lg:w-6/12 rounded-2xl bg-cover bg-center bg-no-repeat"
+         c>
+          <div class="swiper land-mySwiper-2 h-full">
+            <div class="swiper-wrapper rounded-2xl h-full">
+              <div  style="background-image : url(./assets/facilities-img.png)" class="swiper-slide h-[0999999px] rounded-2xl lg:h-auto max-h-[350px] lg:max-h-[100%] bg-no-repeat bg-center bg-cover">
+              </div>
+              <div  style="background-image : url(./assets/grid-1-img-1.png)" class="swiper-slide h-[0999999px] rounded-2xl lg:h-auto max-h-[350px] lg:max-h-[100%] bg-no-repeat bg-center bg-cover">
+              </div>
+              <div  style="background-image : url(./assets/grid-1-img-2.png)" class="swiper-slide h-[0999999px] rounded-2xl lg:h-auto max-h-[350px] lg:max-h-[100%] bg-no-repeat bg-center bg-cover">
+              </div>
+              <div  style="background-image : url(./assets/grid-1-img-3.png)" class="swiper-slide h-[0999999px] rounded-2xl lg:h-auto max-h-[350px] lg:max-h-[100%] bg-no-repeat bg-center bg-cover">
+              </div>
+              <div  style="background-image : url(./assets/grid-1-img-4.png)" class="swiper-slide h-[0999999px] rounded-2xl lg:h-auto max-h-[350px] lg:max-h-[100%] bg-no-repeat bg-center bg-cover">
+              </div>
+        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Facilities -->
+
+
+  <!-- Faq Section -->
+  <section class="bg-right-top bg-contain bg-no-repeat py-16 md:py-20"
+    style="background-image: url(./assets/faq.png); background-size: 800px ;">
+    <div class="container mt-16  2xl:max-w-[1650px] mx-auto px-4">
+      <div>
+        <hr style="transform-origin: left;" class="w-[48px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+        <h1 class="text-[#4091B2] w-full pl-5 font-semibold text-3xl lg:text-5xl">LOREM IPSUM <span
+            class="font-medium text-4xl lg:text-5xl">FAQS</span></h1>
+      </div>
+      <div class="w-full mt-10">
+        <div class="flex sm:flex-row flex-col sm:gap-10" x-data="{selected:1}">
+          <ul class="shadow-box lg:gap-y-[35px] gap-x-[50px] xl:gap-x-[100px] 2xl:gap-x-[200px] grd lg:grid-cols-1">
+            <li class="relative ">
+              <button type="button" class="w-full px-8 py-4 text-left rounded bg-[#5898d9] bg-opacity-10"
+                @click="selected !== 1 ? selected = 1 : selected = null"
+                style="box-shadow: 0px 1px 2px rgba(58, 58, 68, 0.24), 0px 2px 4px rgba(90, 91, 106, 0.24);">
+                <div class="flex items-center  justify-between">
+                  <span class="text-base   font-normal">Lorem ipsum dolor sit amet. Qui neque quia et veniam beatae eum
+                  </span>
+                  <i class="fa-solid fa-chevron-down transition-all duration-200 ease-linear text-[#301200]"
+                    x-bind:class="selected == 1 ? 'rotate-180 ' : ''"></i>
+                </div>
+              </button>
+              <div
+                class="relative overflow-auto bg-[#5898d9] bg-opacity-10 rounded my-4 transition-all duration-300 ease-in   "
+                x-bind:class="selected == 1 ? 'h-max animate-[show-transition_0.5s_ease-in-out]' : 'max-h-0 opacity-0'"
+                id="style-2">
+                <div class="py-6 px-8">
+                  <p class="text-base leading-7  font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Minima molestias, voluptates, dolorem voluptate earum ea dolores laboriosam eos eveniet quidem
+                    dignissimos quia quam tempore amet reprehenderit natus repellat magnam dicta!</p>
+                </div>
+              </div>
+            </li>
+            <li class="relative ">
+              <button type="button" class="w-full px-8 py-4 text-left rounded bg-[#5898d9] bg-opacity-10"
+                @click="selected !== 2 ? selected = 2 : selected = null"
+                style="box-shadow: 0px 1px 2px rgba(58, 58, 68, 0.24), 0px 2px 4px rgba(90, 91, 106, 0.24);">
+                <div class="flex items-center  justify-between">
+                  <span class="text-base   font-normal">Lorem ipsum dolor sit amet. Qui neque quia et veniam beatae eum
+                  </span>
+                  <i class="fa-solid fa-chevron-down transition-all duration-200 ease-linear text-[#301200]"
+                    x-bind:class="selected == 2 ? 'rotate-180 ' : ''"></i>
+                </div>
+              </button>
+              <div
+                class="relative overflow-auto bg-[#5898d9] bg-opacity-10 rounded my-4 transition-all duration-300 ease-in   "
+                x-bind:class="selected == 2 ? 'h-max animate-[show-transition_0.5s_ease-in-out]' : 'max-h-0 opacity-0'"
+                id="style-2">
+                <div class="py-6 px-8">
+                      <p class="text-base leading-7  font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Minima molestias, voluptates, dolorem voluptate earum ea dolores laboriosam eos eveniet quidem
+                    dignissimos quia quam tempore amet reprehenderit natus repellat magnam dicta!</p>
+                </div>
+              </div>
+            </li>
+            <li class="relative ">
+              <button type="button" class="w-full px-8 py-4 text-left rounded bg-[#5898d9] bg-opacity-10"
+                @click="selected !== 3 ? selected = 3 : selected = null"
+                style="box-shadow: 0px 1px 2px rgba(58, 58, 68, 0.24), 0px 2px 4px rgba(90, 91, 106, 0.24);">
+                <div class="flex items-center  justify-between">
+                  <span class="text-base   font-normal">Lorem ipsum dolor sit amet. Qui neque quia et veniam beatae eum
+                  </span>
+                  <i class="fa-solid fa-chevron-down transition-all duration-200 ease-linear text-[#301200]"
+                    x-bind:class="selected == 3 ? 'rotate-180 ' : ''"></i>
+                </div>
+              </button>
+              <div
+                class="relative overflow-auto bg-[#5898d9] bg-opacity-10 rounded my-4 transition-all duration-300 ease-in   "
+                x-bind:class="selected == 3 ? 'h-max animate-[show-transition_0.5s_ease-in-out]' : 'max-h-0 opacity-0'"
+                id="style-2">
+                <div class="py-6 px-8">
+                      <p class="text-base leading-7  font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Minima molestias, voluptates, dolorem voluptate earum ea dolores laboriosam eos eveniet quidem
+                    dignissimos quia quam tempore amet reprehenderit natus repellat magnam dicta!</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="shadow-box lg:gap-y-[35px] gap-x-[50px] xl:gap-x-[100px] 2xl:gap-x-[200px] grd lg:grid-cols-1">
+            <li class="relative ">
+              <button type="button" class="w-full px-8 py-4 text-left rounded bg-[#5898d9] bg-opacity-10"
+                @click="selected !== 7 ? selected = 7 : selected = null"
+                style="box-shadow: 0px 1px 2px rgba(58, 58, 68, 0.24), 0px 2px 4px rgba(90, 91, 106, 0.24);">
+                <div class="flex items-center  justify-between">
+                  <span class="text-base   font-normal">Lorem ipsum dolor sit amet. Qui neque quia et veniam beatae eum
+                  </span>
+                  <i class="fa-solid fa-chevron-down transition-all duration-200 ease-linear text-[#301200]"
+                    x-bind:class="selected == 7 ? 'rotate-180 ' : ''"></i>
+                </div>
+              </button>
+              <div
+                class="relative overflow-auto bg-[#5898d9] bg-opacity-10 rounded my-4 transition-all duration-300 ease-in   "
+                x-bind:class="selected == 7 ? 'h-max animate-[show-transition_0.5s_ease-in-out]' : 'max-h-0 opacity-0'"
+                id="style-2">
+                <div class="py-6 px-8">
+                  <p class="text-base leading-7  font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Minima molestias, voluptates, dolorem voluptate earum ea dolores laboriosam eos eveniet quidem
+                    dignissimos quia quam tempore amet reprehenderit natus repellat magnam dicta!</p>
+                </div>
+              </div>
+            </li>
+            <li class="relative ">
+              <button type="button" class="w-full px-8 py-4 text-left rounded bg-[#5898d9] bg-opacity-10"
+                @click="selected !== 8 ? selected = 8 : selected = null"
+                style="box-shadow: 0px 1px 2px rgba(58, 58, 68, 0.24), 0px 2px 4px rgba(90, 91, 106, 0.24);">
+                <div class="flex items-center  justify-between">
+                  <span class="text-base   font-normal">Lorem ipsum dolor sit amet. Qui neque quia et veniam beatae eum
+                  </span>
+                  <i class="fa-solid fa-chevron-down transition-all duration-200 ease-linear text-[#301200]"
+                    x-bind:class="selected == 8 ? 'rotate-180 ' : ''"></i>
+                </div>
+              </button>
+              <div
+                class="relative overflow-auto bg-[#5898d9] bg-opacity-10 rounded my-4 transition-all duration-300 ease-in   "
+                x-bind:class="selected == 8 ? 'h-max animate-[show-transition_0.5s_ease-in-out]' : 'max-h-0 opacity-0'"
+                id="style-2">
+                <div class="py-6 px-8">
+                      <p class="text-base leading-7  font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Minima molestias, voluptates, dolorem voluptate earum ea dolores laboriosam eos eveniet quidem
+                    dignissimos quia quam tempore amet reprehenderit natus repellat magnam dicta!</p>
+                </div>
+              </div>
+            </li>
+            <li class="relative ">
+              <button type="button" class="w-full px-8 py-4 text-left rounded bg-[#5898d9] bg-opacity-10"
+                @click="selected !== 9 ? selected = 9 : selected = null"
+                style="box-shadow: 0px 1px 2px rgba(58, 58, 68, 0.24), 0px 2px 4px rgba(90, 91, 106, 0.24);">
+                <div class="flex items-center  justify-between">
+                  <span class="text-base   font-normal">Lorem ipsum dolor sit amet. Qui neque quia et veniam beatae eum
+                  </span>
+                  <i class="fa-solid fa-chevron-down transition-all duration-200 ease-linear text-[#301200]"
+                    x-bind:class="selected == 9 ? 'rotate-180 ' : ''"></i>
+                </div>
+              </button>
+              <div
+                class="relative overflow-auto bg-[#5898d9] bg-opacity-10 rounded my-4 transition-all duration-300 ease-in   "
+                x-bind:class="selected == 9 ? 'h-max animate-[show-transition_0.5s_ease-in-out]' : 'max-h-0 opacity-0'"
+                id="style-2">
+                <div class="py-6 px-8">
+                      <p class="text-base leading-7  font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Minima molestias, voluptates, dolorem voluptate earum ea dolores laboriosam eos eveniet quidem
+                    dignissimos quia quam tempore amet reprehenderit natus repellat magnam dicta!</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FAQ SECTION -->
+
+  <!-- Policies -->
+  <section class="my-16">
+    <div class="container px-4 xl:max-w-[1650px] mx-auto xl:px-10">
+      <div>
+        <hr style="transform-origin: left;" class="w-[48px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+        <h4 class="text-[#4091B2] uppercase font-bold ml-2 text-4xl xl:text-5xl">Policies
+        </h4>
+      </div>
+      <div class=" w-full gap-0 xl:gap-[75px] xl:flex-row flex-col flex">
+        <div style="font-family:poppins;font-family: Poppins;
+ 
+      font-weight: 400;
+      line-height: 43px;
+      letter-spacing: 0.02em;
+      text-align: left;
+      " class="w-full xl:w-8/12 py-3">
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
+          </p>
+          <p class="py-5">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
+          </p>
+          <p class="py-5">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
+          </p>
+        </div>
+        <div class="w-full xl:w-3/12 h-full flex flex-col justify-between">
+          <div class="flex gap-8 flex-col justify-between h-full">
+            <h3 style="font-family: poppins;"
+              class="uppercase py-3 text-center text-[#4091B2] font-semibold leading-10">KNOW MORE ABOUT THIS SERVICE
+            </h3>
+            <div class="flex justify-between">
+              <div class="">
+                <hr style="transform-origin: left;" class="w-[25px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+                <h4 class="text-[#000000a8] uppercase text-sm font-bold ml-2 ">STATUS
+                </h4>
+              </div>
+              <div class="fo" style="font-family: poppins;"><a class="text-[#000000a8]" href="">available</a></div>
+            </div>
+            <div class="flex justify-between">
+              <div class="">
+                <hr style="transform-origin: left;" class="w-[25px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+                <h4 class="text-[#000000a8] uppercase text-sm font-bold ml-2 ">Starts from
+                </h4>
+              </div>
+              <div class="fo" style="font-family: poppins;"><a class="text-[#4091B2] font-bold text-2xl" href="">US$
+                  104.00</a>
+              </div>
+            </div>
+            <p class="text-base font-normal leading-10" style="font-family: Poppins;
+letter-spacing: 0.02rem;
+
+">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+              standard dummy text ever since the <a class="text-[#4091B2]">1500s</a>
+
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- Policies -->
+
+  <!-- What they say section -->
+  <section class="my-20">
+    <div class="container px-4 xl:max-w-[1650px] mx-auto xl:px-10">
+      <div class="flex gap-y-16 gap-x-5 lg:flex-row flex-col w-full">
+        <div class="flex justify-center items-center lg:w-6/12">
+          <div class="flex flex-col gap-8 w-full ">
+            <div>
+              <hr style="transform-origin: left;" class="w-[48px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+              <h4 class="text-[#4091B2] ml-2 text-4xl xl:text-5xl">What <span
+                  class="font-bold uppercase pr-2">they</span>Say?
+              </h4>
+            </div>
+
+            <p class="text-[black]">Lorem Ipsum is simply dummy text of the printing <br> and typesetting industry.</p>
+            <p class=" ">lLorem Ipsum is simply dummy text of the  <br> printing and typesetting industry.</p>
+            <p class=" ">lLorem Ipsum is simply dummy text of the  printing</p>
+            <div class="w-full lg:max-w-[330px] relative">
+              <div class="border pl-10  rounded-full border-[#4091B2] py-[9px] font-light text-[#4091B2]">
+                Write Your Thoughts <button data-modal-target="authentication-modal-1"
+                  data-modal-toggle="authentication-modal-1"
+                  class="text-[#4091B2] border-l border-t border-b border-[#4091B2] absolute right-[0] top-[50%] translate-y-[-50%] px-[14px] pr-[15px] py-2 rounded-full"><i
+                    class="fa-light fa-arrow-right "></i></button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:w-6/12 relative">
+          <div class="xl:w-7/12 lg:w-9/12 flex flex-col justify-center relative">
+            <img class="max-h-[400px] object-cover sm:max-w-[500px]" src="./assets/what-they-say.png" alt="">
+            <button style="box-shadow: 0px 4px 60px 0px #292C7C26;
+            "
+              class="swiper-button-next-slider z-[1] absolute right-0 sm:right-[14%]  md:right-[28%] lg:right-[-6%] top-[50%] translate-y-[-50%] bg-white px-5 py-3 rounded-full"><i
+                class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="swiper land-mySwiper-1 mt-[-100px]">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide relative before:w-[5px]">
+                <div class="sm:ml-10 sm:pl-3 what-they-say  rounded-2xl bg-left w-fit ">
+                  <div
+                    class="bg-white border-l-[15px] border-[#FE9179] rounded-xl w-[100%] lg:w-[400px] xl:w-[500px] p-7">
+                    <p class="text-sm font-light border-l-[0.5px] leading-6 border-[gray] pl-6">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry's standard dummy text ever since the
+                      1500s,</p>
+                    <div class="flex mt-5 items-center justify-between">
+                      <a href="">Kyloria Danu</a>
+                      <div class="flex flex-col">
+                        <p><i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                        </p>
+                        <a href="" class="text-sm text-gray-400">12 View</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide relative before:w-[5px]">
+                <div class="sm:ml-10 sm:pl-3 what-they-say  rounded-2xl bg-left w-fit ">
+                  <div
+                    class="bg-white border-l-[15px] border-[#FE9179] rounded-xl w-[100%] lg:w-[400px] xl:w-[500px] p-7">
+                    <p class="text-sm font-light border-l-[0.5px] leading-6 border-[gray] pl-6">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry's standard dummy text ever since the
+                      1500s,</p>
+                    <div class="flex mt-5 items-center justify-between">
+                      <a href="">Kyloria Danu</a>
+                      <div class="flex flex-col">
+                        <p><i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                        </p>
+                        <a href="" class="text-sm text-gray-400">12 View</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide relative before:w-[5px]">
+                <div class="sm:ml-10 sm:pl-3 what-they-say  rounded-2xl bg-left w-fit ">
+                  <div
+                    class="bg-white border-l-[15px] border-[#FE9179] rounded-xl w-[100%] lg:w-[400px] xl:w-[500px] p-7">
+                    <p class="text-sm font-light border-l-[0.5px] leading-6 border-[gray] pl-6">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry's standard dummy text ever since the
+                      1500s,</p>
+                    <div class="flex mt-5 items-center justify-between">
+                      <a href="">Kyloria Danu</a>
+                      <div class="flex flex-col">
+                        <p><i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                        </p>
+                        <a href="" class="text-sm text-gray-400">12 View</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide relative before:w-[5px]">
+                <div class="sm:ml-10 sm:pl-3 what-they-say  rounded-2xl bg-left w-fit ">
+                  <div
+                    class="bg-white border-l-[15px] border-[#FE9179] rounded-xl w-[100%] lg:w-[400px] xl:w-[500px] p-7">
+                    <p class="text-sm font-light border-l-[0.5px] leading-6 border-[gray] pl-6">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry's standard dummy text ever since the
+                      1500s,</p>
+                    <div class="flex mt-5 items-center justify-between">
+                      <a href="">Kyloria Danu</a>
+                      <div class="flex flex-col">
+                        <p><i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                        </p>
+                        <a href="" class="text-sm text-gray-400">12 View</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide relative before:w-[5px]">
+                <div class="sm:ml-10 sm:pl-3 what-they-say  rounded-2xl bg-left w-fit ">
+                  <div
+                    class="bg-white border-l-[15px] border-[#FE9179] rounded-xl w-[100%] lg:w-[400px] xl:w-[500px] p-7">
+                    <p class="text-sm font-light border-l-[0.5px] leading-6 border-[gray] pl-6">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry's standard dummy text ever since the
+                      1500s,</p>
+                    <div class="flex mt-5 items-center justify-between">
+                      <a href="">Kyloria Danu</a>
+                      <div class="flex flex-col">
+                        <p><i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                          <i class="fa-solid text-[#FBA333] fa-star"></i>
+                        </p>
+                        <a href="" class="text-sm text-gray-400">12 View</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </section>
+  <!-- What they say section -->
+
+  <!-- Popular Topics -->
+  <section class="my-14">
+    <div class="container px-4 xl:max-w-[1650px] mx-auto xl:px-10">
+      <div>
+        <hr style="transform-origin: left;" class="w-[48px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+        <h4 class="text-[#4091B2] uppercase font-bold ml-2 text-4xl xl:text-5xl">Popular Topics
+        </h4>
+      </div>
+      <!-- filer Services -->
+      <div class="gallery">
+        <div class="gallery-filter flex justify-between mt-5">
+          <div>
+            <span class="filter-item" data-filter="Websites">Adventure</span>
+            <span class="filter-item" data-filter="writing">Travel</span>
+            <span class="filter-item" data-filter="email">Fashion</span>
+            <span class="filter-item" data-filter="others">Technology</span>
+            <span class="filter-item" data-filter="Ecommerce">Branding</span>
+          </div>
+          <span style="color:#4091B2 !important" class="filter-item active text-[#4091B2]" data-filter="all">view
+            all</span>
+
+
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 gap-y-7 md:grid-cols-3 xl:grid-cols-5 ">
+          <!-- gallery item start -->
+          <div class="gallery-item Websites">
+            <div class="bg-white rounded-lg  hover:scale-105 transition-all duration-300 ease-in-out h-full">
+              <div class="flex gap-3 justify-between h-full flex-col">
+                <div class="">
+                  <img class="w-full max-h-[250px] xl:max-h-full bg-[#f6f6f6] object-cover "
+                    src="./assets//popular tricks.png" alt="">
+                </div>
+                <div style="font-style: lora;">
+                  08.08.2022
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h1 class="text-sm capitalize font-medium ">Thins to know before visiting
+                    Cave in Germany</h1>
+                  <p class="text-xs font-light opacity-90">CProgressively incentivize cooperative systems through
+                    technically sound functionalities. Credibly productivate
+                    seamless data with flexible schemas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item writing">
+            <div class="bg-white rounded-lg  hover:scale-105 transition-all duration-300 ease-in-out h-full">
+              <div class="flex gap-3 justify-between h-full flex-col">
+                <div class="">
+                  <img class="w-full max-h-[250px] xl:max-h-full bg-[#f6f6f6] object-cover "
+                    src="./assets/Blog Image (1).png" alt="">
+                </div>
+                <div style="font-style: lora;">
+                  08.08.2022
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h1 class="text-sm capitalize font-medium ">Thins to know before visiting
+                    Cave in Germany</h1>
+                  <p class="text-xs font-light opacity-90">CProgressively incentivize cooperative systems through
+                    technically sound functionalities. Credibly productivate
+                    seamless data with flexible schemas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item email">
+            <div class="bg-white rounded-lg  hover:scale-105 transition-all duration-300 ease-in-out h-full">
+              <div class="flex gap-3 justify-between h-full flex-col">
+                <div class="">
+                  <img class="w-full max-h-[250px] xl:max-h-full bg-[#f6f6f6] object-cover "
+                    src="./assets/Blog Image (2).png" alt="">
+                </div>
+                <div style="font-style: lora;">
+                  08.08.2022
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h1 class="text-sm capitalize font-medium ">Thins to know before visiting
+                    Cave in Germany</h1>
+                  <p class="text-xs font-light opacity-90">CProgressively incentivize cooperative systems through
+                    technically sound functionalities. Credibly productivate
+                    seamless data with flexible schemas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item others">
+            <div class="bg-white rounded-lg  hover:scale-105 transition-all duration-300 ease-in-out h-full">
+              <div class="flex gap-3 justify-between h-full flex-col">
+                <div class="">
+                  <img class="w-full max-h-[250px] xl:max-h-full bg-[#f6f6f6] object-cover "
+                    src="./assets/Blog Image (3).png" alt="">
+                </div>
+                <div style="font-style: lora;">
+                  08.08.2022
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h1 class="text-sm capitalize font-medium ">Thins to know before visiting
+                    Cave in Germany</h1>
+                  <p class="text-xs font-light opacity-90">CProgressively incentivize cooperative systems through
+                    technically sound functionalities. Credibly productivate
+                    seamless data with flexible schemas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-item Ecommerce">
+            <div class="bg-white rounded-lg  hover:scale-105 transition-all duration-300 ease-in-out h-full">
+              <div class="flex gap-3 justify-between h-full flex-col">
+                <div class="">
+                  <img class="w-full max-h-[250px] xl:max-h-full bg-[#f6f6f6] object-cover "
+                    src="./assets//popular tricks.png" alt="">
+                </div>
+                <div style="font-style: lora;">
+                  08.08.2022
+                </div>
+                <div class="flex flex-col gap-3">
+                  <h1 class="text-sm capitalize font-medium ">Thins to know before visiting
+                    Cave in Germany</h1>
+                  <p class="text-xs font-light opacity-90">CProgressively incentivize cooperative systems through
+                    technically sound functionalities. Credibly productivate
+                    seamless data with flexible schemas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- gallery item end -->
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- Popular Topics -->
+
+  <!-- Related Services -->
+  <section class="my-10">
+    <div class="container px-4 xl:max-w-[1650px] mx-auto xl:px-10">
+      <div class="my-10">
+        <hr style="transform-origin: left;" class="w-[48px] rounded-full rotate-90 h-[5px] bg-[#FE9179]">
+        <h4 class="text-[#4091B2] uppercase font-bold ml-2 text-4xl xl:text-5xl">Related Services
+        </h4>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div>
+          <div class="h-fit static w-full  top-32 px-4 sm:px-6 py-4 lg:flex justify-around flex-col "
+            style="border-radius: 20px; box-shadow: 0px 4px 30px 0px #38476D17;">
+            <h1 class="text-xl">Lorem, ipsum.</h1>
+            <div class=" flex  h-fit justify-between text-xs text-[#B5B5C3] items-center ">
+              <p class="text-sm">Lorem, ipsum.</p>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-1.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-2.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-3.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-4.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div>
+          <div class="h-fit static w-full  top-32 px-4 sm:px-6 py-4 lg:flex justify-around flex-col "
+            style="border-radius: 20px; box-shadow: 0px 4px 30px 0px #38476D17;">
+            <h1 class="text-xl">Lorem, ipsum.</h1>
+            <div class=" flex  h-fit justify-between text-xs text-[#B5B5C3] items-center ">
+              <p class="text-sm">Lorem, ipsum.</p>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-1.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-2.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-3.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-4.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div>
+          <div class="h-fit static w-full  top-32 px-4 sm:px-6 py-4 lg:flex justify-around flex-col "
+            style="border-radius: 20px; box-shadow: 0px 4px 30px 0px #38476D17;">
+            <h1 class="text-xl">Lorem, ipsum.</h1>
+            <div class=" flex  h-fit justify-between text-xs text-[#B5B5C3] items-center ">
+              <p class="text-sm">Lorem, ipsum.</p>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-1.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-2.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-3.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+            <div class="flex  w-full mt-6">
+              <div class="flex  w-10/12 flex-row">
+                <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-4.png"
+                    alt="">
+                </div>
+                <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                  <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                  <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                  <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                      Ago</span> </h3>
+                </div>
+              </div>
+              <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                <p>0</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="check-grid">
+          <div class="h-fit static w-full  top-32 px-8 sm:px-6 py-4 lg:flex justify-around flex-col "
+            style="border-radius: 20px; box-shadow: 0px 4px 30px 0px #38476D17;">
+            <h1 class="text-xl">Lorem, ipsum.</h1>
+            <div class=" flex  h-fit justify-between text-xs text-[#B5B5C3] items-center ">
+              <p class="text-sm">Lorem, ipsum.</p>
+            </div>
+            <div class="gap-4 xl:block lg:grid block lg:grid-cols-4">
+              <div class="flex  w-full mt-6">
+                <div class="flex  w-10/12 flex-row">
+                  <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-1.png"
+                      alt=""></div>
+                  <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                    <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                    <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                    <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                        Ago</span> </h3>
+                  </div>
+                </div>
+                <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="flex  w-full mt-6">
+                <div class="flex  w-10/12 flex-row">
+                  <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-2.png"
+                      alt=""></div>
+                  <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                    <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                    <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                    <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                        Ago</span> </h3>
+                  </div>
+                </div>
+                <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="flex  w-full mt-6">
+                <div class="flex  w-10/12 flex-row">
+                  <div class="w-5/12"><img class="w-full    rounded-[10px]" src="./assets/related-services-img-3.png"
+                      alt=""></div>
+                  <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                    <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                    <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                    <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                        Ago</span> </h3>
+                  </div>
+                </div>
+                <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="flex  w-full mt-6">
+                <div class="flex  w-10/12 flex-row">
+                  <div class="w-5/12"><img class="w-full rounded-[10px]" src="./assets/related-services-img-4.png"
+                      alt=""></div>
+                  <div class="flex justify-around md:justify-between w-10/12 pl-2 flex-col">
+                    <h1 class="text-base md:text-sm font-semibold">Lorem, ipsum.</h1>
+                    <h2 class="text-xs text-[#c2c1c1] ">Lorem, ipsum dolor.</h2>
+                    <h3 class="text-xs text-[#b0afaf]">Uploaded By <span class="text-[#4091B2] font-[500]">2Days
+                        Ago</span> </h3>
+                  </div>
+                </div>
+                <div class="flex text-[#c2c1c1] justify-end w-2/12 "><i class="fa-light fa-comments pr-1"></i>
+                  <p>0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- Related Services -->
+
+  <!-- MAP -->
+  <div id='map-canvas'>
+Please Allow Google Maps from your browser
+  </div>
+  <!-- MAP -->
+
+  <!-- Footer -->
+  <div class="pt-[60px] bg-white">
+    <div class="container xl:max-w-[1750px] mx-auto px-4">
+      <footer class=" ">
+        <div class="lg:flex  gap-6 lg:gap-20 xl:gap-48">
+          <div class="flex justify-between items-start mt-[30px] lg:mt-0 w-full overflow-hidden">
+            <div>
+              <h2 class="mb-4 text-lg font-bold  text-[#1F2B59]  dark:text-white">Company</h2>
+              <ul class="text-[#1F2B59] opacity-80 dark:text-gray-400 space-y-3">
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] xl:text-[16px]">About Us</a>
+                </li>
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] xl:text-[16px]">Careers</a>
+                </li>
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] xl:text-[16px]">Support</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline lg:text-[14px] xl:text-[16px]">Terms and Conditions</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="mb-4 text-lg font-bold  text-[#1F2B59]  dark:text-white">Features</h2>
+              <ul class="text-[#1F2B59] opacity-80 dark:text-gray-400 space-y-3">
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] xl:text-[16px]">Vehicle Tracker</a>
+                </li>
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] xl:text-[16px]">iOS &amp; Android Apps</a>
+                </li>
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] xl:text-[16px]">Business Trips</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline lg:text-[14px] xl:text-[16px]">Locations</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p class="text-[#1F2B59] opacity-80 dark:text-gray-400 inline-block">Get discounts worth up to 60% sent
+                straight to your inbox</p>
+              <div class="relative w-full  mx-auto bg-[#ffffff] rounded-full mt-8"
+                style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+                <input
+                  class="block p-3 pl-8 w-full  h-[70px]  text-base  text-[#4091B2] rounded-full border-none  focus:ring-transparent focus:border-transparent dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 placeholder:text-[#4091B2] placeholder:text-sm sm:placeholder:text-base"
+                  placeholder="Enter your email here" type="email" id="email" required="">
+                <button type="submit"
+                  class="absolute text-base top-[6px] right-[7px] sm:w-full text-center bg-[#4091B2] text-white cursor-pointer hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  text-[18px] leading-[18px] sm:max-w-[164px] h-[58px] w-[110px] px-[10px] sm:px-0 rounded-full">Search</button>
+              </div>
+            </div>
+            <div>
+              <img class="w-full" src="./assets/footer-img.png" alt="" hey="fade-up">
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- <div class="mt-[32rem]">s</div> -->
+  <script type='text/javascript'
+    src='https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places,weather'></script>
+  <script src='myLoc.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="../src/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>

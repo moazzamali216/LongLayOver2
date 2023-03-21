@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./output.css">
+  <link rel="stylesheet" href="./output.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./custom.css">
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+</head>
+<body class="" style="font-family:poppins;font-style: inter;">
+
+<!-- Navbar -->
+  <nav class="fixed w-full z-[99999] top-0 left-0 transition-all duration-500 header__top" x-data="{scrollAtTop: true}">
+    <div class="bg-white py-4 ">
+      <div class="2xl:max-w-[75%] xl:max-w-[85%] lg:max-w-[95%] w-full ml-auto lg:pr-10 xl:pr-24">
+        <div>
+          <div x-data="{date: new Date}"  class="flex lg:justify-between justify-end gap-6 items-center relative z-10">
+            <p class="text-[#4091B2] font-medium">
+              <i class="fa-regular fa-clock"></i>
+              <span class="pl-1"  x-text="date.toLocaleTimeString()"></span>
+            </p>
+
+            <p x-data="myDate()" class="text-[#4091B2] font-medium hidden lg:block">
+              <i class="fa-regular fa-calendar"></i>
+              <span class="pl-1" x-text="week.dayName +','+ week.date +' ' + week.month() +' ' + week.year "></span>
+            </p>
+
+            <p class="text-[#4091B2] font-medium sm:block hidden">
+              <i class="fa-regular fa-clouds"></i>
+              <span class="pl-1">28°C Johar Town, Lahore</span>
+            </p>
+            <div class="justify-start items-center text-[#4091B2] font-medium hidden lg:flex">
+              <i class="fa-regular fa-globe mr-2"></i>
+              <select id="underline_select" class="block py-2.5 px-0 w-16 text-base font-medium text-[#4091B2] bg-transparent border-0 appearance-none  focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option value="English" selected ="">EN</option>
+                <option value="Čeština">Čeština</option>
+              </select>
+            </div>
+            <a href="./create-account.html" class="inline-block bg-[#F9F9F9] py-1 px-3 rounded-full text-[#4091B2] font-medium">
+              Become a vendor
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div x-bind:class="{'bg-[#4091B2] shadow-lg' : !scrollAtTop}" @scroll.window="scrollAtTop = (window.pageYOffset > 50) ? false : true">
+    <div class="container xl:max-w-[90%] 2xl:max-w-[1650px]  mx-auto px-4 mt-[-65px] lg:mt-0" >
+      <div class="flex justify-between lg:justify-start flex-wrap items-center relative py-3">
+        <a href="./index.html" class="flex items-center lg:absolute lg:left-0 xl:top-[-65px]">
+          <img src="./assets/logo 2.svg" class="h-full w-full" alt="Peeksta-Logo">
+        </a>
+        <div class="flex lg:order-2 md:ml-[60px] ">
+            <div class="div  justify-between items-center space-x-5 hidden md:flex mr-6 lg:mr-0">
+                <a href="./login.html" class="text-white text-sm font-medium">Sign in </a>
+                <a href="./create-account.html" class="text-[#4091B2] text-sm font-medium bg-white px-2 py-1 rounded-full">Sign Up</a>
+            </div>
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1 md:ml-auto" id="navbar-sticky">
+            <ul class="flex flex-col p-4 mt-4 bg-white lg:bg-transparent rounded-lg border border-gray-100 lg:flex-row lg:space-x-12 lg:mt-0 lg:text-sm lg:font-medium lg:border-0 ">
+              <li>
+                  <a href="./index.html" class="block relative py-2 pr-4 pl-3 font-[400] text-[#ffffff] text-[16px] bg-blue-700 rounded lg:bg-transparent lg:text-white lg:p-0 dark:text-white" aria-current="page">Home</a>
+              </li>
+              <li>
+                  <a href="./result.html" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Destinations</a>
+              </li>
+              <li>
+                  <a href="./blog.html" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Travel Diaries</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Videos</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+              </li>
+              <li class="md:hidden">
+                <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Login</a>
+              </li>
+              <li class="md:hidden">
+                <a href="#" class="block py-2 pr-4 pl-3 font-[400] text-gray-700 lg:text-[#ffffff] rounded text-[16px] hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-white lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Sign Up</a>
+              </li>
+              <li>
+                <div class="lg:hidden w-full mt-4 relative">
+                  <div class="relative group w-full inline-block ">
+                    <div href="#" class="flex justify-between items-center py-2 pr-3 pl-3 font-[400] text-[#31406f] rounded text-base hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-[#3E47DD] lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                      <div>
+                        <i class="fa-solid fa-sliders-simple mr-2 text-[rgb(62_71_221)]"></i>Language and currency
+                      </div>
+                      <div class="flex justify-start items-center gap-3">
+                        <p>EUR</p>
+                        <span>
+                          <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-4" data-test-id="feature.locale_flag.EN"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path><path d="M3.30709 6.25897C2.05028 7.89416 1.10259 9.77885 0.550781 11.8263H8.87441L3.30709 6.25897Z" fill="#0052B4"></path><path d="M31.4485 11.8263C30.8967 9.77891 29.9489 7.89422 28.6922 6.25903L23.125 11.8263H31.4485Z" fill="#0052B4"></path><path d="M0.550781 20.1741C1.10266 22.2214 2.05034 24.1061 3.30709 25.7413L8.87422 20.1741H0.550781Z" fill="#0052B4"></path><path d="M25.7411 3.30764C24.1059 2.05083 22.2213 1.10314 20.1738 0.55127V8.87483L25.7411 3.30764Z" fill="#0052B4"></path><path d="M6.2583 28.6925C7.89349 29.9493 9.77818 30.897 11.8256 31.4489V23.1254L6.2583 28.6925Z" fill="#0052B4"></path><path d="M11.8255 0.55127C9.77811 1.10314 7.89343 2.05083 6.2583 3.30758L11.8255 8.87477V0.55127Z" fill="#0052B4"></path><path d="M20.1738 31.4489C22.2212 30.897 24.1059 29.9493 25.741 28.6926L20.1738 23.1254V31.4489Z" fill="#0052B4"></path><path d="M23.125 20.1741L28.6922 25.7413C29.9489 24.1062 30.8967 22.2214 31.4485 20.1741H23.125Z" fill="#0052B4"></path><path d="M31.8646 13.9131H18.0871H18.087V0.135438C17.4038 0.0465 16.7073 0 16 0C15.2926 0 14.5962 0.0465 13.9131 0.135438V13.9129V13.913H0.135438C0.0465 14.5962 0 15.2927 0 16C0 16.7074 0.0465 17.4038 0.135438 18.0869H13.9129H13.913V31.8646C14.5962 31.9535 15.2926 32 16 32C16.7073 32 17.4038 31.9536 18.0869 31.8646V18.0871V18.087H31.8646C31.9535 17.4038 32 16.7074 32 16C32 15.2927 31.9535 14.5962 31.8646 13.9131Z" fill="#D80027"></path><path d="M20.1738 20.174L27.3136 27.3138C27.642 26.9855 27.9552 26.6423 28.2541 26.2866L22.1415 20.174H20.1738V20.174Z" fill="#D80027"></path><path d="M11.8258 20.174H11.8257L4.68604 27.3137C5.01428 27.6421 5.35747 27.9553 5.71322 28.2542L11.8258 22.1414V20.174Z" fill="#D80027"></path><path d="M11.8263 11.8262V11.826L4.68659 4.68622C4.35822 5.01447 4.04497 5.35766 3.74609 5.71341L9.85878 11.8261H11.8263V11.8262Z" fill="#D80027"></path><path d="M20.1738 11.8262L27.3136 4.68635C26.9854 4.35797 26.6422 4.04472 26.2865 3.74591L20.1738 9.8586V11.8262Z" fill="#D80027"></path></svg>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="group-hover:block lg:absolute hidden  text-gray-700 w-full lg:w-[150px] right-0 rounded-lg z-10">
+                      <div class="bg-white px-5 py-6">
+                          <ul class="flex justify-start items-center gap-3 w-full">
+                            <li>
+                                <input type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required>
+                                <label for="hosting-small" class="inline-flex justify-start items-center gap-2 p-[4px_12px] w-full text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-[#3e47dd] peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 peer-checked:bg-[#3e47dd]">                           
+                                    <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-3.5" data-test-id="feature.locale_flag.CZ"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#F5F7FB"></path><path d="M14.608 16C14.608 16 4.69492 27.3159 4.68555 27.3137C7.58092 30.2091 11.581 32 15.9993 32C24.8358 32 31.9993 24.8365 31.9993 16H14.608Z" fill="#D80027"></path><path d="M4.68628 4.68628C-1.56209 10.9347 -1.56209 21.0653 4.68628 27.3138C7.26834 24.7317 9.75166 22.2484 16 16L4.68628 4.68628Z" fill="#0052B4"></path></svg>
+                                    <p>CZ</p>
+                                </label>
+                            </li>
+                            <li>
+                                <input checked  type="radio" id="hosting-big" name="hosting" value="hosting-big" class="hidden peer">
+                                <label for="hosting-big" class="inline-flex justify-start items-center gap-2 p-[4px_12px] w-full text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-[#3e47dd] peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 peer-checked:bg-[#3e47dd] ">
+                                    <svg viewBox="0 0 32 32" focusable="false" class="chakra-icon css-1pckyyl w-3.5" data-test-id="feature.locale_flag.EN"><path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path><path d="M3.30709 6.25897C2.05028 7.89416 1.10259 9.77885 0.550781 11.8263H8.87441L3.30709 6.25897Z" fill="#0052B4"></path><path d="M31.4485 11.8263C30.8967 9.77891 29.9489 7.89422 28.6922 6.25903L23.125 11.8263H31.4485Z" fill="#0052B4"></path><path d="M0.550781 20.1741C1.10266 22.2214 2.05034 24.1061 3.30709 25.7413L8.87422 20.1741H0.550781Z" fill="#0052B4"></path><path d="M25.7411 3.30764C24.1059 2.05083 22.2213 1.10314 20.1738 0.55127V8.87483L25.7411 3.30764Z" fill="#0052B4"></path><path d="M6.2583 28.6925C7.89349 29.9493 9.77818 30.897 11.8256 31.4489V23.1254L6.2583 28.6925Z" fill="#0052B4"></path><path d="M11.8255 0.55127C9.77811 1.10314 7.89343 2.05083 6.2583 3.30758L11.8255 8.87477V0.55127Z" fill="#0052B4"></path><path d="M20.1738 31.4489C22.2212 30.897 24.1059 29.9493 25.741 28.6926L20.1738 23.1254V31.4489Z" fill="#0052B4"></path><path d="M23.125 20.1741L28.6922 25.7413C29.9489 24.1062 30.8967 22.2214 31.4485 20.1741H23.125Z" fill="#0052B4"></path><path d="M31.8646 13.9131H18.0871H18.087V0.135438C17.4038 0.0465 16.7073 0 16 0C15.2926 0 14.5962 0.0465 13.9131 0.135438V13.9129V13.913H0.135438C0.0465 14.5962 0 15.2927 0 16C0 16.7074 0.0465 17.4038 0.135438 18.0869H13.9129H13.913V31.8646C14.5962 31.9535 15.2926 32 16 32C16.7073 32 17.4038 31.9536 18.0869 31.8646V18.0871V18.087H31.8646C31.9535 17.4038 32 16.7074 32 16C32 15.2927 31.9535 14.5962 31.8646 13.9131Z" fill="#D80027"></path><path d="M20.1738 20.174L27.3136 27.3138C27.642 26.9855 27.9552 26.6423 28.2541 26.2866L22.1415 20.174H20.1738V20.174Z" fill="#D80027"></path><path d="M11.8258 20.174H11.8257L4.68604 27.3137C5.01428 27.6421 5.35747 27.9553 5.71322 28.2542L11.8258 22.1414V20.174Z" fill="#D80027"></path><path d="M11.8263 11.8262V11.826L4.68659 4.68622C4.35822 5.01447 4.04497 5.35766 3.74609 5.71341L9.85878 11.8261H11.8263V11.8262Z" fill="#D80027"></path><path d="M20.1738 11.8262L27.3136 4.68635C26.9854 4.35797 26.6422 4.04472 26.2865 3.74591L20.1738 9.8586V11.8262Z" fill="#D80027"></path></svg>
+                                    <p>EN</p>
+                                </label>
+                            </li>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>  
+    </div>
+   </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Hero Section -->
+  <section class="relative text-white bg-gradient-to-r from-[#4091B2] to-[#59C6D4]" >
+    <!--Content before waves-->
+   <div class="container max-w-[90%] 2xl:max-w-[1650px] mx-auto px-4 pt-20">
+      <div class="lg:h-[85vh] w-full grid">
+        <div class="grid lg:grid-cols-2 gap-6 pt-10">
+          <div class="flex justify-start items-center" hey="fade-right">
+            <div class="text-left pt-20" hey-delay="900"  hey="fade-right">
+              <h1 class="text-white font-normal text-5xl sm:text-6xl lg:text-5xl xl:text-7xl text-left">Discover  the <br class="lg:block hidden"> 
+                World with <br class="sm:block hidden"> Long Layover
+              </h1>
+              <p class="text-white font-normal text-base sm:text-lg leading-7  sm:leading-8 lg:text-base lg:leading-6 xl:text-lg mt-5 xl:leading-9 ">From misty Northern California redwood forests to sun-kissed Southern California beaches, the Golden State will make you believe you're dreaming. But trust us, you aren't. Discover hundreds of places to visit and learn about our diverse regions and lively cities all in one place.</p>
+              <div class="text-left mt-6">
+                <a href="#" class="text-[#4091B2] bg-white py-5 px-6 inline-block rounded-full">Sign up Now!</a>
+              </div>
+            </div>
+          </div>
+          <div class="relative  flex justify-end items-center" hey="fade-left" hey-delay="1200" >
+              <img class="w-[440px] lg:w-[600px] mx-auto" src="./assets/travel-concept-with-baggage-PhotoRoom.png" alt="">
+          </div>
+        </div>
+      </div>
+   </div>
+    
+    <!--Waves Container-->
+    <div hey-delay="600" hey="fade-up" hey-anchor-placement="top-bottom">
+      <svg class="waves w-full mb-[-7px] h-[5vh] min-h-[100px] mx-h-[150px] absolute bottom-[7px]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+    </div>
+    <div class="relative w-full" hey-delay="300" hey="fade-up" hey-anchor-placement="top-bottom">
+      <div class="absolute max-w-[700px] w-full mx-auto left-[50%] translate-x-[-50%] bottom-4 bg-[#ffffff] rounded-full " style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+        <i class="fa-solid fa-magnifying-glass absolute left-6 top-[50%] translate-y-[-50%] text-[#4091B2]"></i>
+        <input class="block p-3 pl-16 w-full  h-[70px]  text-base  text-[#4091B2] rounded-full border-none  focus:ring-transparent focus:border-transparent dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 placeholder:text-[#4091B2] placeholder:text-sm sm:placeholder:text-base" placeholder="Search with code or locations" type="email" id="email" required="">
+        <button type="submit" class="absolute text-base top-[6px] right-[7px] sm:w-full text-center bg-[#4091B2] text-white cursor-pointer hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  text-[18px] leading-[18px] sm:max-w-[164px] h-[58px] w-[110px] px-[10px] sm:px-0 rounded-full">Search</button>
+      </div>
+    </div>
+  <!--Waves end-->
+  </section>
+  <!-- Hero Section -->
+
+  <!-- Globe Section -->
+  <div>
+    <div class="container max-w-[90%] 2xl:max-w-[1650px] w-full mx-auto px-4 mt-20 overflow-hidden">
+      <div class="mt-5 w-full h-auto grid md:grid-cols-2" hey="fade-up" hey-anchor-placement="top-center">
+        <div class="s-1-item-1 m-auto h-auto relative"  >
+            <img class="w-[80%] m-auto globe-1 " src="./assets/globe.png" alt="">
+        </div>
+        <div class=" h-auto flex items-center" >
+            <div>
+              <h1 class="font[poppins] text-[2.6rem] font-medium">Lorem ipsum.</h1>
+              <p class="text-[grey] mt-6 font-light text-base leading-6 lg:leading-9 xl:leading-[2.9rem] xl:text-xl ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+            </div>
+        </div>
+      </div>
+      <div class="mt-5 w-full h-auto grid md:grid-cols-2 " hey="fade-up" hey-anchor-placement="top-center">
+        <div class="order-2 md:order-none h-auto  flex items-center">
+          <div>
+            <h1 class="font[poppins] text-[2.6rem] font-medium">Lorem ipsum.</h1>
+            <p class="text-[grey] mt-6 font-light text-base leading-6 lg:leading-9 xl:leading-[2.9rem] xl:text-xl ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+          </div>
+        </div>
+        <div class="s-1-item-1 order-1 h-auto md:order-none relative " hey="fade-left">
+            <img class="md:mx-auto h-full" src="./assets/bg-flight.svg" alt="">
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Globe Section -->
+
+  <!-- Why Choose Us -->
+  <section>
+    <div class="container 2xl:max-w-[1650px] sm:max-w-[90%] w-full mx-auto px-4 mt-[10rem] ">
+      <div class="flex-col w-full flex" hey="zoom-in">
+        <div class="header-1 justify-center text-[2.25rem] text-center items-center flex">
+            <p class="  font-semibold text-[#4091B2]">WHY</p>
+            <p class="  ml-2" style="white-space:nowrap">Choose us</p>
+        </div>
+        <div class="flex font-light w-full text-center">
+            <p class="mt-[1.15rem] leading-[180%] w-full text-base sm:text-[1.5rem] header-det">Lorem Ipsum is simply dummy text of the printing and typesetting <br class="hidden sm:block"> industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+      </div>
+      <div class="grid  md:grid-cols-2 lg:grid-cols-3 gap-y-[2.8rem] gap-x-10 xl:gap-x-20 rounded-[10px] mt-[6.8rem]">
+        <div style="box-shadow: 0px 10px 60px 0px #262D7614;" class=" p-9 rounded-[20px]  grid text-center" hey="fade-up" hey-delay="300">
+            <div class="bg-[#4091B2] text-[#2A6190] w-16 h-16 rounded-full flex justify-center items-center mt-[-3.9rem] mx-auto">
+                <i class="fa-regular fa-location-dot text-[2rem] text-white"></i> 
+            </div>
+            <h1 class="text text-[#4091B2]  mt-[3.8rem] text-[1.875rem]">Lorem ipsum</h1>
+            <p class="text-2 text-center text-base sm:text-lg  leading-9 font-light  mt-[3.31rem]">Lorem ipsum dolor sit amet, consect adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
+        </div>
+        <div style="box-shadow: 0px 10px 60px 0px #262D7614;" class=" p-9 rounded-[20px]  grid text-center" hey="fade-up" hey-delay="600">
+            <div class="bg-[#F0C53E] text-[#2A6190] w-16 h-16 rounded-full flex justify-center items-center mt-[-3.9rem] mx-auto">
+              <i class=" fa-solid fa-earth-americas text-white text-[2rem]"></i>
+            </div>
+            <h1 class="text text-[#4091B2]  mt-[3.8rem] text-[1.875rem]">Lorem ipsum</h1>
+            <p class="text-2 text-center text-base sm:text-lg  leading-9 font-light  mt-[3.31rem]">Lorem ipsum dolor sit amet, consect adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
+        </div>
+        <div style="box-shadow: 0px 10px 60px 0px #262D7614;" class=" p-9 rounded-[20px]  grid text-center" hey="fade-up" hey-delay="900">
+            <div class="bg-[#77F7F0] text-[#2A6190] w-16 h-16 rounded-full flex justify-center items-center mt-[-3.9rem] mx-auto">
+              <i class="fa-light text-white text-[2rem] fa-circle-dollar"></i>
+            </div>
+            <h1 class="text text-[#4091B2]  mt-[3.8rem] text-[1.875rem]">Lorem ipsum</h1>
+            <p class="text-2 text-center text-base sm:text-lg  leading-9 font-light  mt-[3.31rem]">Lorem ipsum dolor sit amet, consect adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Why Choose Us -->
+
+  <!-- bit far Content -->
+  <section class="my-14 lg:my-20" style="font-family: poppins;">
+    <div class="container 2xl:max-w-[1650px] sm:max-w-[90%] w-full mx-auto px-4 mt-[10rem] ">
+      <h1 class="uppercase text-4xl  font-bold">popular destination</h1>
+      <div class="swiper py-12 index-mySwiper-1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div style="background-image: url(./assets/recommended-destination.png);" class="h-[1000px] overflow-hidden rounded-3xl relative bg-no-repeat bg-cover bg-center max-h-[400px]">
+            <div class="h-full  w-full bg-[#0000007a]"></div>
+            <h1 class="absolute bottom-10 left-7 text-white text-xl">TURKEY</h1>
+            <div class="flex absolute w-full px-6 justify-between bottom-5 gap-3 items-center">
+              <div class="flex w-fit justify-between gap-1 items-center">
+                <i class="fa-solid fa-star text-[#FFCE31]"></i>
+                <p class="text-sm text-[#FFCE31]">4.8 Rating</p>
+              </div>
+                <div class="text-[#B5B5C3] text-sm">2K+ Booked</div>
+            </div>
+            </div>
+          </div>
+           <div class="swiper-slide">
+            <div style="background-image: url(./assets/recommended-destination.png);" class="h-[1000px] overflow-hidden rounded-3xl relative bg-no-repeat bg-cover bg-center max-h-[400px]">
+            <div class="h-full  w-full bg-[#0000007a]"></div>
+            <h1 class="absolute bottom-10 left-7 text-white text-xl">TURKEY</h1>
+            <div class="flex absolute w-full px-6 justify-between bottom-5 gap-3 items-center">
+              <div class="flex w-fit justify-between gap-1 items-center">
+                <i class="fa-solid fa-star text-[#FFCE31]"></i>
+                <p class="text-sm text-[#FFCE31]">4.8 Rating</p>
+              </div>
+                <div class="text-[#B5B5C3] text-sm">2K+ Booked</div>
+            </div>
+            </div>
+          </div>
+           <div class="swiper-slide">
+            <div style="background-image: url(./assets/recommended-destination.png);" class="h-[1000px] overflow-hidden rounded-3xl relative bg-no-repeat bg-cover bg-center max-h-[400px]">
+            <div class="h-full  w-full bg-[#0000007a]"></div>
+            <h1 class="absolute bottom-10 left-7 text-white text-xl">TURKEY</h1>
+            <div class="flex absolute w-full px-6 justify-between bottom-5 gap-3 items-center">
+              <div class="flex w-fit justify-between gap-1 items-center">
+                <i class="fa-solid fa-star text-[#FFCE31]"></i>
+                <p class="text-sm text-[#FFCE31]">4.8 Rating</p>
+              </div>
+                <div class="text-[#B5B5C3] text-sm">2K+ Booked</div>
+            </div>
+            </div>
+          </div>
+           <div class="swiper-slide">
+            <div style="background-image: url(./assets/recommended-destination.png);" class="h-[1000px] overflow-hidden rounded-3xl relative bg-no-repeat bg-cover bg-center max-h-[400px]">
+            <div class="h-full  w-full bg-[#0000007a]"></div>
+            <h1 class="absolute bottom-10 left-7 text-white text-xl">TURKEY</h1>
+            <div class="flex absolute w-full px-6 justify-between bottom-5 gap-3 items-center">
+              <div class="flex w-fit justify-between gap-1 items-center">
+                <i class="fa-solid fa-star text-[#FFCE31]"></i>
+                <p class="text-sm text-[#FFCE31]">4.8 Rating</p>
+              </div>
+                <div class="text-[#B5B5C3] text-sm">2K+ Booked</div>
+            </div>
+            </div>
+          </div>
+           <div class="swiper-slide">
+            <div style="background-image: url(./assets/recommended-destination.png);" class="h-[1000px] overflow-hidden rounded-3xl relative bg-no-repeat bg-cover bg-center max-h-[400px]">
+            <div class="h-full  w-full bg-[#0000007a]"></div>
+            <h1 class="absolute bottom-10 left-7 text-white text-xl">TURKEY</h1>
+            <div class="flex absolute w-full px-6 justify-between bottom-5 gap-3 items-center">
+              <div class="flex w-fit justify-between gap-1 items-center">
+                <i class="fa-solid fa-star text-[#FFCE31]"></i>
+                <p class="text-sm text-[#FFCE31]">4.8 Rating</p>
+              </div>
+                <div class="text-[#B5B5C3] text-sm">2K+ Booked</div>
+            </div>
+            </div>
+          </div>
+           <div class="swiper-slide">
+            <div style="background-image: url(./assets/recommended-destination.png);" class="h-[1000px] overflow-hidden rounded-3xl relative bg-no-repeat bg-cover bg-center max-h-[400px]">
+            <div class="h-full  w-full bg-[#0000007a]"></div>
+            <h1 class="absolute bottom-10 left-7 text-white text-xl">TURKEY</h1>
+            <div class="flex absolute w-full px-6 justify-between bottom-5 gap-3 items-center">
+              <div class="flex w-fit justify-between gap-1 items-center">
+                <i class="fa-solid fa-star text-[#FFCE31]"></i>
+                <p class="text-sm text-[#FFCE31]">4.8 Rating</p>
+              </div>
+                <div class="text-[#B5B5C3] text-sm">2K+ Booked</div>
+            </div>
+            </div>
+          </div>
+           <div class="swiper-slide">
+            <div style="background-image: url(./assets/recommended-destination.png);" class="h-[1000px] overflow-hidden rounded-3xl relative bg-no-repeat bg-cover bg-center max-h-[400px]">
+            <div class="h-full  w-full bg-[#0000007a]"></div>
+            <h1 class="absolute bottom-10 left-7 text-white text-xl">TURKEY</h1>
+            <div class="flex absolute w-full px-6 justify-between bottom-5 gap-3 items-center">
+              <div class="flex w-fit justify-between gap-1 items-center">
+                <i class="fa-solid fa-star text-[#FFCE31]"></i>
+                <p class="text-sm text-[#FFCE31]">4.8 Rating</p>
+              </div>
+                <div class="text-[#B5B5C3] text-sm">2K+ Booked</div>
+            </div>
+            </div>
+          </div>
+           <div class="swiper-slide">
+            <div style="background-image: url(./assets/recommended-destination.png);" class="h-[1000px] overflow-hidden rounded-3xl relative bg-no-repeat bg-cover bg-center max-h-[400px]">
+            <div class="h-full  w-full bg-[#0000007a]"></div>
+            <h1 class="absolute bottom-10 left-7 text-white text-xl">TURKEY</h1>
+            <div class="flex absolute w-full px-6 justify-between bottom-5 gap-3 items-center">
+              <div class="flex w-fit justify-between gap-1 items-center">
+                <i class="fa-solid fa-star text-[#FFCE31]"></i>
+                <p class="text-sm text-[#FFCE31]">4.8 Rating</p>
+              </div>
+                <div class="text-[#B5B5C3] text-sm">2K+ Booked</div>
+            </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bit Far Content -->
+
+  <!-- bit far Content -->
+  <section class="py-10 my-5 bg-[#59C6D41A] lg:my-20" style="font-family: poppins;">
+    <div class="container 2xl:max-w-[1650px] sm:max-w-[90%] w-full mx-auto px-4">
+      <h1 class="uppercase py-7 text-4xl  font-bold">Featured content</h1>
+      <div class="swiper  index-mySwiper-2">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide relative">
+            <div class="relative w-full grid" style="filter:  drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));">
+              <div class="w-full h-[400px] bg-no-repeat bg-cover bg-center  rounded-tl-2xl  rounded-tr-2xl" style="background-image: url(./assets/destination.png);"> 
+              </div>
+              <div class="bg-white p-5 h-[94px]  text-center rounded-bl-2xl rounded-br-2xl">
+                  <p class="text-[#444444] font-medium text-lg">The historical city of Vigan</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="relative w-full grid" style="filter:  drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));">
+              <div class="w-full h-[400px] bg-no-repeat bg-cover bg-center  rounded-tl-2xl  rounded-tr-2xl" style="background-image: url(./assets/first-grid-img-2.png);"> 
+              </div>
+              <div class="bg-white p-5 h-[94px]  text-center rounded-bl-2xl rounded-br-2xl">
+                  <p class="text-[#444444] font-medium text-lg">The historical city of Vigan</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="relative w-full grid" style="filter:  drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));">
+              <div class="w-full h-[400px] bg-no-repeat bg-cover bg-center  rounded-tl-2xl  rounded-tr-2xl" style="background-image: url(./assets/first-grid-img-3.png);"> 
+              </div>
+              <div class="bg-white p-5 h-[94px]  text-center rounded-bl-2xl rounded-br-2xl">
+                  <p class="text-[#444444] font-medium text-lg">The historical city of Vigan</p>
+              </div>
+            </div>
+          </div>
+       
+          <div class="swiper-slide relative">
+            <div class="relative w-full grid" style="filter:  drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));">
+              <div class="w-full h-[400px] bg-no-repeat bg-cover bg-center  rounded-tl-2xl  rounded-tr-2xl" style="background-image: url(./assets/destination.png);"> 
+              </div>
+              <div class="bg-white p-5 h-[94px]  text-center rounded-bl-2xl rounded-br-2xl">
+                  <p class="text-[#444444] font-medium text-lg">The historical city of Vigan</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="relative w-full grid" style="filter:  drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));">
+              <div class="w-full h-[400px] bg-no-repeat bg-cover bg-center  rounded-tl-2xl  rounded-tr-2xl" style="background-image: url(./assets/first-grid-img-2.png);"> 
+              </div>
+              <div class="bg-white p-5 h-[94px]  text-center rounded-bl-2xl rounded-br-2xl">
+                  <p class="text-[#444444] font-medium text-lg">The historical city of Vigan</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative">
+            <div class="relative w-full grid" style="filter:  drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));">
+              <div class="w-full h-[400px] bg-no-repeat bg-cover bg-center  rounded-tl-2xl  rounded-tr-2xl" style="background-image: url(./assets/first-grid-img-3.png);"> 
+              </div>
+              <div class="bg-white p-5 h-[94px]  text-center rounded-bl-2xl rounded-br-2xl">
+                  <p class="text-[#444444] font-medium text-lg">The historical city of Vigan</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- Bit Far Content -->
+
+  <!-- Latest Submission -->
+  <section class=" mb-10">
+    <div class="container 2xl:max-w-[1650px] sm:max-w-[90%] w-full mx-auto px-4 pt-7 ">
+      <div class="">
+        <h1 class="mt-[1.75rem] text-[2rem] uppercase font-semibold ml-[2rem] lg:ml-[4rem]">Latest Submissions</h1>
+        <div class="mt-[1.7rem] grid md:grid-cols-2 2xl:grid-cols-2 gap-12">
+          <div class="grid-last-1 p-[1rem] sm:p-[1.87rem] sm:pt-[1.7rem] sm:pb-[1.9rem] rounded-[20px] sm:m-10 md:m-0 w-auto" style="box-shadow: 0px 0px 30px rgba(56, 71, 109, 0.09);">
+            <h1 class="text-xl font-medium">Lorem ipsum.</h1>
+            <div class="flex mt-[0.45rem] h-auto justify-between items-center">
+                <p class="font-light text-sm text-[#B5B5C3]">Lorem ipsum dolor sit amet consectetur.</p>
+                <div><img class="w-full" src="./assets/Dropdown.png" alt=""></div>
+            </div>
+            <div class="flex  mt-[1.5rem] justify-between">
+                <div class="flex justify-between">
+                    <div><img class="w-full rounded-2xl" src="./assets/submission-1.png" alt=""></div>
+                    <div class="flex flex-col ml-3  sm:ml-5 justify-around text-xs text-[#B5B5C3]">
+                        <p class=" font-medium text-base text-black">Lorem, ipsum.</p>
+                        <p class="">Lorem, ipsum dolor.</p>
+                        <p class="">Uploaded by :<span class=" ml-[2px] text-[#4091B2] font-semibold">2days ago</span></p>
+                    </div>
+                </div>
+                <div><i class="text-[1.5rem] fa-sharp text-[#4091B2]  fa-solid fa-share"></i></div>
+            </div>
+            <div class="flex  mt-[1.5rem] justify-between">
+              <div class="flex justify-between">
+                  <div><img class="w-full rounded-2xl" src="./assets/submission-2.png" alt=""></div>
+                  <div class="flex flex-col ml-3  sm:ml-5 justify-around text-xs text-[#B5B5C3]">
+                      <p class=" font-medium text-base text-black">Lorem, ipsum.</p>
+                      <p class="">Lorem, ipsum dolor.</p>
+                      <p class="">Uploaded by :<span class=" ml-[2px] text-[#4091B2] font-semibold">2days ago</span></p>
+                  </div>
+              </div>
+              <div><i class="text-[1.5rem] fa-sharp text-[#4091B2]  fa-solid fa-share"></i></div>
+            </div>
+            <div class="flex  mt-[1.5rem] justify-between">
+              <div class="flex justify-between">
+                  <div><img class="w-full rounded-2xl" src="./assets/submission-3.png" alt=""></div>
+                  <div class="flex flex-col ml-3  sm:ml-5 justify-around text-xs text-[#B5B5C3]">
+                      <p class=" font-medium text-base text-black">Lorem, ipsum.</p>
+                      <p class="">Lorem, ipsum dolor.</p>
+                      <p class="">Uploaded by :<span class=" ml-[2px] text-[#4091B2] font-semibold">2days ago</span></p>
+                  </div>
+              </div>
+              <div><i class="text-[1.5rem] fa-sharp text-[#4091B2]  fa-solid fa-share"></i></div>
+            </div>
+            <div class="flex  mt-[1.5rem] justify-between">
+              <div class="flex justify-between">
+                  <div><img class="w-full rounded-2xl" src="./assets/submission-4.png" alt=""></div>
+                  <div class="flex flex-col ml-3  sm:ml-5 justify-around text-xs text-[#B5B5C3]">
+                      <p class=" font-medium text-base text-black">Lorem, ipsum.</p>
+                      <p class="">Lorem, ipsum dolor.</p>
+                      <p class="">Uploaded by :<span class=" ml-[2px] text-[#4091B2] font-semibold">2days ago</span></p>
+                  </div>
+              </div>
+              <div><i class="text-[1.5rem] fa-sharp text-[#4091B2]  fa-solid fa-share"></i></div>
+            </div>
+          </div>
+
+          <div class="grid-last-1 p-[1rem] sm:p-[1.87rem] sm:pt-[1.7rem] sm:pb-[1.9rem] rounded-[20px] sm:m-10 md:m-0 w-auto" style="box-shadow: 0px 0px 30px rgba(56, 71, 109, 0.09);">
+            <h1 class="text-xl font-medium">Lorem ipsum.</h1>
+            <div class="flex mt-[0.45rem] h-auto justify-between items-center">
+                <p class="font-light text-sm text-[#B5B5C3]">Lorem ipsum dolor sit amet consectetur.</p>
+                <div><img class="w-full" src="./assets/Dropdown.png" alt=""></div>
+            </div>
+            <div class="flex  mt-[1.5rem] justify-between">
+                <div class="flex justify-between">
+                    <div><img class="w-full rounded-2xl" src="./assets/submission-1.png" alt=""></div>
+                    <div class="flex flex-col ml-3  sm:ml-5 justify-around text-xs text-[#B5B5C3]">
+                        <p class=" font-medium text-base text-black">Lorem, ipsum.</p>
+                        <p class="">Lorem, ipsum dolor.</p>
+                        <p class="">Uploaded by :<span class=" ml-[2px] text-[#4091B2] font-semibold">2days ago</span></p>
+                    </div>
+                </div>
+                <div><i class="text-[1.5rem] fa-sharp text-[#4091B2]  fa-solid fa-share"></i></div>
+            </div>
+            <div class="flex  mt-[1.5rem] justify-between">
+              <div class="flex justify-between">
+                  <div><img class="w-full rounded-2xl" src="./assets/submission-2.png" alt=""></div>
+                  <div class="flex flex-col ml-3  sm:ml-5 justify-around text-xs text-[#B5B5C3]">
+                      <p class=" font-medium text-base text-black">Lorem, ipsum.</p>
+                      <p class="">Lorem, ipsum dolor.</p>
+                      <p class="">Uploaded by :<span class=" ml-[2px] text-[#4091B2] font-semibold">2days ago</span></p>
+                  </div>
+              </div>
+              <div><i class="text-[1.5rem] fa-sharp text-[#4091B2]  fa-solid fa-share"></i></div>
+            </div>
+            <div class="flex  mt-[1.5rem] justify-between">
+              <div class="flex justify-between">
+                  <div><img class="w-full rounded-2xl" src="./assets/submission-3.png" alt=""></div>
+                  <div class="flex flex-col ml-3  sm:ml-5 justify-around text-xs text-[#B5B5C3]">
+                      <p class=" font-medium text-base text-black">Lorem, ipsum.</p>
+                      <p class="">Lorem, ipsum dolor.</p>
+                      <p class="">Uploaded by :<span class=" ml-[2px] text-[#4091B2] font-semibold">2days ago</span></p>
+                  </div>
+              </div>
+              <div><i class="text-[1.5rem] fa-sharp text-[#4091B2]  fa-solid fa-share"></i></div>
+            </div>
+            <div class="flex  mt-[1.5rem] justify-between">
+              <div class="flex justify-between">
+                  <div><img class="w-full rounded-2xl" src="./assets/submission-4.png" alt=""></div>
+                  <div class="flex flex-col ml-3  sm:ml-5 justify-around text-xs text-[#B5B5C3]">
+                      <p class=" font-medium text-base text-black">Lorem, ipsum.</p>
+                      <p class="">Lorem, ipsum dolor.</p>
+                      <p class="">Uploaded by :<span class=" ml-[2px] text-[#4091B2] font-semibold">2days ago</span></p>
+                  </div>
+              </div>
+              <div><i class="text-[1.5rem] fa-sharp text-[#4091B2]  fa-solid fa-share"></i></div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </section>
+  <!-- Latest Submission -->
+
+  <!-- Video Section -->
+  <section class="flex  justify-center items-center bg-video-wrap relative  overflow-hidden ">
+    <div class="layer-end"></div>
+    <h1 class="absolute z-[800] text-white text-[2.5rem] md:text-[3.4rem] mt-[-110px] font-semibold">Lorem, ipsum.</h1>
+    <p class="absolute z-[800] md:text-[1.25rem] mt-[80px] sm:mt-[140px] sm:w-10/12  text-white text-center  md:w-10/12">Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, cum! <br> ipsum det,Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, nisi. moles</p>
+    <video src="./assets/video.mp4" loop muted autoplay>
+    </video>
+    <!-- <div class="overlay"> -->
+  </section>
+  <!-- Video Section -->
+
+
+
+  <!-- Footer -->
+  <div class=" pt-[60px] bg-white">
+    <div class="container xl:max-w-[1750px] mx-auto px-4">
+      <footer class=" ">
+        <div class="lg:flex  gap-6 lg:gap-20 xl:gap-48">
+          <div class="lg:flex justify-between items-start mt-[30px] lg:mt-0 w-full overflow-hidden">
+           <div class="flex lg:flex-row justify-between lg:justify-start w-full lg:w-fit">
+            <div class="flex flex-col gap-">
+              <h2 class="mb-4 text-lg font-bold  text-[#1F2B59]  dark:text-white">Services</h2>
+              <ul class="text-[#1F2B59] opacity-80 dark:text-gray-400 space-y-3">
+                  <li class="">
+                      <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Travel Guide</a>
+                  </li>
+                  <li class="">
+                    <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Salon and Spa</a>
+                  </li>
+                  <li class="">
+                    <a href="#" class="hover:underline lg:text-[14px]  opacity-90 xl:text-[16px]">Food Range</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline lg:text-[14px]  opacity-90 xl:text-[16px]">Shopping</a>
+                  </li>
+                  <li class="mt-24">
+                    <!-- <a href="#" class="hover:underline lg:text-[14px]  opacity-90 xl:text-[16px]">Terms and Conditions</a> -->
+                  </li>
+              </ul>
+              <a href="#" class="hover:underline lg:text-[14px]  opacity-40 xl:text-[16px] pt-[4rem]">Terms and Conditions</a>
+
+          </div>
+          <div>
+            <h2 class="mb-4 text-lg font-bold  text-[#1F2B59]  dark:text-white">About</h2>
+            <ul class="text-[#1F2B59] opacity-80 dark:text-gray-400 space-y-3">
+                <li class="">
+                    <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Why Choose Us</a>
+                </li>
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Who we are</a>
+                </li>
+                <li class="">
+                  <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Contact Us</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline lg:text-[14px] opacity-90 xl:text-[16px]">Our Blogs</a>
+                </li>
+            </ul>
+          </div>
+           </div>
+        <div class="flex-col flex">
+          <div>
+            <p class="text-[#1F2B59] opacity-80 dark:text-gray-400 inline-block">Get discounts worth up to 60% sent straight to your inbox</p>
+            <div class="relative w-full  mx-auto bg-[#ffffff] rounded-full mt-8" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+              <input class="block p-3 pl-8 w-full  h-[70px]  text-base  text-[#4091B2] rounded-full border-none  focus:ring-transparent focus:border-transparent dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 placeholder:text-[#4091B2] placeholder:text-sm sm:placeholder:text-base" placeholder="Enter your email here" type="email" id="email" required="">
+              <button type="submit" class="absolute text-base top-[6px] right-[7px] sm:w-full text-center bg-[#4091B2] text-white cursor-pointer hover:bg-primary-800 focus:ring-4 focus:ring-primary-300  text-[18px] leading-[18px] sm:max-w-[164px] h-[58px] w-[110px] px-[10px] sm:px-0 rounded-full">Search</button>
+            </div>
+          </div>
+          <div class="flex justify-center gap-4  mt-7">
+            <a href=""><img src="./assets/logo-1.png" alt=""></a>
+            <a href=""><img src="./assets/logo-2.png" alt=""></a>
+            <a href=""><img src="./assets/logo-3.png" alt=""></a>
+            <a href=""><img src="./assets/logo-4.png" alt=""></a>
+
+          </div>
+          <div class="flex justify-end pt-[4rem] items-center gap-2">
+      <img src="./assets/icon-park-outline_handle-c.png" alt="">    <p class="opacity-40">2022 All rights reserved</p>
+          </div>
+        </div>
+            <div class="w-full lg:w-fit justify-start flex" >
+              <img class="w-ful flex justify-center l max-w-[300px] lg:max-w-full" src="./assets/footer-img.png" alt="" hey="fade-up">
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- <div class="mt-[32rem]">s</div> -->
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script type='text/javascript'
+  src='https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places,weather'></script>
+  <script src='myLoc.js'></script>
+  <script src="../src/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </body>
+  </html>
